@@ -17,16 +17,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static watt.w170803.ActivityClientes.itemClicado;
 
 public class ActivityClientes extends AppCompatActivity {
 
@@ -39,6 +43,7 @@ public class ActivityClientes extends AppCompatActivity {
     private Button btnNovoCliente;
 
     private int opcaoSelecionada;
+    protected static String itemClicado;
 
     private ClientesAdapter adapter;
     private ArrayList<Clientes> clientes;
