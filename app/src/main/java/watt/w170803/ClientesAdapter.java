@@ -50,7 +50,6 @@ class ClientesAdapter extends RecyclerView.Adapter {
             public void onClick(View view) {
                 itemClicado = (String) view.getTag();
                 // ******* NÃO FUNCIONA ESSA CARALHA *******
-                //= (String) view.getTag();
                 //Intent intent = new Intent(MINHA BENGA, TelaClientesExibe.class);
                 //startActivity(intent);
             }
