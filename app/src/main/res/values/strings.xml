@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">W170803</string>
+
+    <!--Labels -->
+    <string name="label_principal">Watt</string>
+    <string name="label_clientes">Clientes</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tela_cadastro_clientes">TelaCadastroClientes</string>
+    <string name="alert_botao_sim">sim</string>
+    <string name="alert_botao_nao">nao</string>
+
+    <string name="alert_pessoa_fisica">Pessoa Física (CPF e RG)</string>
+    <string name="alert_pessoa_juridica">Pessoa Jurídica (CNPJ e Inscr.)</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_alert_clientes_cadastro_tipo">
+        <item>@string/alert_pessoa_fisica</item>
+        <item>@string/alert_pessoa_juridica</item>
+    </string-array>
+
+</resources>
