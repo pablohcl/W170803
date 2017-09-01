@@ -2,16 +2,14 @@ package watt.w170803;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import static watt.w170803.ActivityClientes.itemClicado;
 
 /**
  * Created by Usuario on 31/08/2017.
@@ -48,10 +46,11 @@ class ClientesAdapter extends RecyclerView.Adapter {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemClicado = (String) view.getTag();
-                // ******* NÃO FUNCIONA ESSA CARALHA *******
-                //Intent intent = new Intent(MINHA BENGA, TelaClientesExibe.class);
-                //startActivity(intent);
+                Intent intent = new Intent(context, TelaClientesExibe.class);
+                Bundle args = new Bundle();
+                args.putString("clicado",(String)view.getTag());
+                intent.putExtras(args);
+                context.startActivity(intent);
             }
         });
     }
@@ -72,7 +71,7 @@ class ClientesAdapter extends RecyclerView.Adapter {
         public ViewHolder(View v) {
             super(v);
             tvIdCliente = (TextView) v.findViewById(R.id.tv_id_cliente);
-            tvRazaoSocial = (TextView) v.findViewById(R.id.tv_razao_social);
+            tvRazaoSocial = (TextView) v.findViewById(R.id.tv_razao_social_clientes_exibe);
             tvFantasia = (TextView) v.findViewById(R.id.tv_fantasia);
             tvBairro = (TextView) v.findViewById(R.id.tv_bairro);
             tvCidade = (TextView) v.findViewById(R.id.tv_cidade);

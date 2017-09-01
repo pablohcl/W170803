@@ -6,4 +6,255 @@
     android:layout_height="match_parent"
     tools:context="watt.w170803.TelaClientesExibe">
 
+    <ScrollView
+        android:id="@+id/sv_tela_clientes_exibe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_id_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Código" />
+
+            <TextView
+                android:id="@+id/tv_id_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_razao_social_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Razão social / Nome" />
+
+            <TextView
+                android:id="@+id/tv_razao_social_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_fantasia_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Nome fantasia / Nome do comercio" />
+
+            <TextView
+                android:id="@+id/tv_fantasia_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_cpf_cnpj_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="CNPJ / CPF" />
+
+            <TextView
+                android:id="@+id/tv_cpf_cnpj_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_rg_inscr_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Inscrição estadual / RG" />
+
+            <TextView
+                android:id="@+id/tv_rg_inscr_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_cep_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="CEP" />
+
+            <TextView
+                android:id="@+id/tv_cep_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_endereco_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Endereço" />
+
+            <TextView
+                android:id="@+id/tv_endereco_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_numero_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Número" />
+
+            <TextView
+                android:id="@+id/tv_numero_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_complemento_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Complemento" />
+
+            <TextView
+                android:id="@+id/tv_complemento_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_bairro_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Bairro" />
+
+            <TextView
+                android:id="@+id/tv_bairro_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_cidade_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Cidade" />
+
+            <TextView
+                android:id="@+id/tv_cidade_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_contato_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Contato" />
+
+            <TextView
+                android:id="@+id/tv_contato_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_aniver_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Data de aniversario" />
+
+            <TextView
+                android:id="@+id/tv_aniver_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_telefone_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Telefones" />
+
+            <TextView
+                android:id="@+id/tv_telefone_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_telefone2_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_email_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="E-mail" />
+
+            <TextView
+                android:id="@+id/tv_email_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_obs_label_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLabelsClientesExibe"
+                android:text="Observação" />
+
+            <TextView
+                android:id="@+id/tv_obs_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"
+                android:text="TextView" />
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

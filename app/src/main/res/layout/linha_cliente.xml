@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_razao_social"
+                android:id="@+id/tv_razao_social_clientes_exibe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -74,7 +74,7 @@
                 android:layout_marginLeft="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_razao_social"
+                app:layout_constraintTop_toBottomOf="@+id/tv_razao_social_clientes_exibe"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp" />
 

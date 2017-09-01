@@ -6,6 +6,7 @@
     <color name="colorPrimary">#4caf50</color>
     <color name="colorPrimaryDark">#81c784</color>
     <color name="colorAccent">#ff9800</color>
+    <color name="colorLabelsClientesExibe">#ffb74d</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

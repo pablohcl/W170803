@@ -30,8 +30,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static watt.w170803.ActivityClientes.itemClicado;
-
 public class ActivityClientes extends AppCompatActivity {
 
     //Banco
@@ -43,7 +41,6 @@ public class ActivityClientes extends AppCompatActivity {
     private Button btnNovoCliente;
 
     private int opcaoSelecionada;
-    protected static String itemClicado;
 
     private ClientesAdapter adapter;
     private ArrayList<Clientes> clientes;

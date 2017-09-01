@@ -57,6 +57,46 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_EMAIL,
             BaseDB.CLIENTE_OBS};
 
+    public static final String[] TBL_CLIENTE_COLUNAS_JURIDICA = {
+            BaseDB.CLIENTE_ID,
+            BaseDB.CLIENTE_RAZAO_SOCIAL,
+            BaseDB.CLIENTE_FANTASIA,
+            BaseDB.CLIENTE_CNPJ,
+            BaseDB.CLIENTE_INSCRICAO_ESTADUAL,
+            BaseDB.CLIENTE_CEP,
+            BaseDB.CLIENTE_ENDERECO,
+            BaseDB.CLIENTE_NUMERO,
+            BaseDB.CLIENTE_COMPLEMENTO,
+            BaseDB.CLIENTE_BAIRRO,
+            BaseDB.CLIENTE_CIDADE,
+            BaseDB.CLIENTE_ESTADO,
+            BaseDB.CLIENTE_CONTATO,
+            BaseDB.CLIENTE_ANIVER,
+            BaseDB.CLIENTE_TELEFONE,
+            BaseDB.CLIENTE_TELEFONE2,
+            BaseDB.CLIENTE_EMAIL,
+            BaseDB.CLIENTE_OBS};
+
+    public static final String[] TBL_CLIENTE_COLUNAS_FISICA = {
+            BaseDB.CLIENTE_ID,
+            BaseDB.CLIENTE_RAZAO_SOCIAL,
+            BaseDB.CLIENTE_FANTASIA,
+            BaseDB.CLIENTE_RG,
+            BaseDB.CLIENTE_CPF,
+            BaseDB.CLIENTE_CEP,
+            BaseDB.CLIENTE_ENDERECO,
+            BaseDB.CLIENTE_NUMERO,
+            BaseDB.CLIENTE_COMPLEMENTO,
+            BaseDB.CLIENTE_BAIRRO,
+            BaseDB.CLIENTE_CIDADE,
+            BaseDB.CLIENTE_ESTADO,
+            BaseDB.CLIENTE_CONTATO,
+            BaseDB.CLIENTE_ANIVER,
+            BaseDB.CLIENTE_TELEFONE,
+            BaseDB.CLIENTE_TELEFONE2,
+            BaseDB.CLIENTE_EMAIL,
+            BaseDB.CLIENTE_OBS};
+
     public static final String[] TBL_CLIENTE_COLUNAS_CONSULTA_FISICA = {
             BaseDB.CLIENTE_ID,
             BaseDB.CLIENTE_RAZAO_SOCIAL,

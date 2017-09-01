@@ -25,9 +25,11 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".TelaClientesCadastroFisica"
+            android:label="Pessoa física"
             android:parentActivityName=".ActivityClientes" />
         <activity
             android:name=".TelaClientesCadastroJuridica"
+            android:label="Pessoa jurídica"
             android:parentActivityName=".ActivityClientes" />
         <activity android:name=".TelaClientesExibe"></activity>
     </application>
