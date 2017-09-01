@@ -28,7 +28,8 @@
                 android:id="@+id/tv_id_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Código" />
 
             <TextView
@@ -36,13 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_razao_social_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Razão social / Nome" />
 
             <TextView
@@ -50,13 +52,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_fantasia_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Nome fantasia / Nome do comercio" />
 
             <TextView
@@ -64,13 +67,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_cpf_cnpj_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="CNPJ / CPF" />
 
             <TextView
@@ -78,13 +82,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_rg_inscr_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Inscrição estadual / RG" />
 
             <TextView
@@ -92,13 +97,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_cep_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="CEP" />
 
             <TextView
@@ -106,13 +112,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_endereco_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Endereço" />
 
             <TextView
@@ -120,13 +127,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_numero_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Número" />
 
             <TextView
@@ -134,13 +142,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_complemento_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Complemento" />
 
             <TextView
@@ -148,13 +157,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_bairro_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Bairro" />
 
             <TextView
@@ -162,13 +172,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_cidade_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Cidade" />
 
             <TextView
@@ -176,13 +187,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_contato_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Contato" />
 
             <TextView
@@ -190,13 +202,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_aniver_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Data de aniversario" />
 
             <TextView
@@ -204,13 +217,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_telefone_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Telefones" />
 
             <TextView
@@ -218,20 +232,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_telefone2_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_email_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="E-mail" />
 
             <TextView
@@ -239,20 +254,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_obs_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorLabelsClientesExibe"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
                 android:text="Observação" />
 
             <TextView
                 android:id="@+id/tv_obs_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textColor="@color/colorPrimary"
                 android:text="TextView" />
         </LinearLayout>

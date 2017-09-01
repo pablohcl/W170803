@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by Usuario on 31/08/2017.
  */
 
-class ClientesAdapter extends RecyclerView.Adapter {
+public class ClientesAdapter extends RecyclerView.Adapter {
 
     private Context context;
     private ArrayList<Clientes> clientes;
