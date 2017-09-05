@@ -42,13 +42,13 @@ public class ClientesAdapter extends RecyclerView.Adapter {
         hold.tvFantasia.setText(String.valueOf(cli.getFantasia()));
         hold.tvBairro.setText(String.valueOf(cli.getBairro()));
         hold.tvCidade.setText(String.valueOf(cli.getCidade()));
-        holder.itemView.setTag(cli.getFantasia());
+        holder.itemView.setTag(cli.getCodigoCliente());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, TelaClientesExibe.class);
                 Bundle args = new Bundle();
-                args.putString("clicado",(String)view.getTag());
+                args.putLong("clicado",(Long)view.getTag());
                 intent.putExtras(args);
                 context.startActivity(intent);
             }

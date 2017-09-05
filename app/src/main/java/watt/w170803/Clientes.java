@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Clientes implements Serializable {
     private long codigoCliente;
+    private String tipoCliente;
     private String razaoSocial;
     private String fantasia;
     private Integer cep;
@@ -18,7 +19,6 @@ public class Clientes implements Serializable {
     private String complemento;
     private String bairro;
     private String cidade;
-    private String estado;
     private String contato;
     private String aniver;
     private Integer telefone;
@@ -29,8 +29,9 @@ public class Clientes implements Serializable {
     public Clientes() {
     }
 
-    public Clientes(long codigoCliente, String razaoSocial, String fantasia, Integer cep, String endereco, Integer numero, String complemento, String bairro, String cidade, String estado, String contato, String aniver, Integer telefone, Integer telefone2, String email, String obs) {
+    public Clientes(long codigoCliente, String tipoCliente, String razaoSocial, String fantasia, Integer cep, String endereco, Integer numero, String complemento, String bairro, String cidade, String contato, String aniver, Integer telefone, Integer telefone2, String email, String obs) {
         this.codigoCliente = codigoCliente;
+        this.tipoCliente = tipoCliente;
         this.razaoSocial = razaoSocial;
         this.fantasia = fantasia;
         this.cep = cep;
@@ -39,7 +40,6 @@ public class Clientes implements Serializable {
         this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.estado = estado;
         this.contato = contato;
         this.aniver = aniver;
         this.telefone = telefone;
@@ -54,6 +54,14 @@ public class Clientes implements Serializable {
 
     public void setCodigoCliente(long codigoCliente) {
         this.codigoCliente = codigoCliente;
+    }
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
     }
 
     public String getRazaoSocial() {
@@ -118,14 +126,6 @@ public class Clientes implements Serializable {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public String getContato() {

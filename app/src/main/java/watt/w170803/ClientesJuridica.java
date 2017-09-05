@@ -11,8 +11,8 @@ public class ClientesJuridica extends Clientes {
 
     public ClientesJuridica(){};
 
-    public ClientesJuridica(long codigoCliente, String razaoSocial, String fantasia, Integer cep, String endereco, Integer numero, String complemento, String bairro, String cidade, String estado, String contato, String aniver, Integer telefone, Integer telefone2, String email, String obs, Long cnpj, Long inscricaoEstadual) {
-        super(codigoCliente, razaoSocial, fantasia, cep, endereco, numero, complemento, bairro, cidade, estado, contato, aniver, telefone, telefone2, email, obs);
+    public ClientesJuridica(long codigoCliente, String tipoCliente, String razaoSocial, String fantasia, Integer cep, String endereco, Integer numero, String complemento, String bairro, String cidade, String contato, String aniver, Integer telefone, Integer telefone2, String email, String obs, Long cnpj, Long inscricaoEstadual) {
+        super(codigoCliente, tipoCliente, razaoSocial, fantasia, cep, endereco, numero, complemento, bairro, cidade, contato, aniver, telefone, telefone2, email, obs);
         this.cnpj = cnpj;
         this.inscricaoEstadual = inscricaoEstadual;
     }

@@ -13,6 +13,7 @@ public class BaseDB extends SQLiteOpenHelper {
     //Tabela
     public static final String TBL_CLIENTE = "cliente";
     public static final String CLIENTE_ID = "codigoCliente";
+    public static final String CLIENTE_TIPO = "tipo";
     public static final String CLIENTE_RAZAO_SOCIAL = "razao_social";
     public static final String CLIENTE_FANTASIA = "fantasia";
     public static final String CLIENTE_CNPJ = "cnpj";
@@ -25,7 +26,6 @@ public class BaseDB extends SQLiteOpenHelper {
     public static final String CLIENTE_COMPLEMENTO = "complemento";
     public static final String CLIENTE_BAIRRO = "bairro";
     public static final String CLIENTE_CIDADE = "cidade";
-    public static final String CLIENTE_ESTADO = "estado";
     public static final String CLIENTE_CONTATO = "contato";
     public static final String CLIENTE_ANIVER = "aniver";
     public static final String CLIENTE_TELEFONE = "telefone";
@@ -37,6 +37,7 @@ public class BaseDB extends SQLiteOpenHelper {
     /* Colunas da Tabela PRODUTO. São públicos para qualquer classe. */
     public static final String[] TBL_CLIENTE_COLUNAS = {
             BaseDB.CLIENTE_ID,
+            BaseDB.CLIENTE_TIPO,
             BaseDB.CLIENTE_RAZAO_SOCIAL,
             BaseDB.CLIENTE_FANTASIA,
             BaseDB.CLIENTE_CNPJ,
@@ -49,7 +50,6 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_COMPLEMENTO,
             BaseDB.CLIENTE_BAIRRO,
             BaseDB.CLIENTE_CIDADE,
-            BaseDB.CLIENTE_ESTADO,
             BaseDB.CLIENTE_CONTATO,
             BaseDB.CLIENTE_ANIVER,
             BaseDB.CLIENTE_TELEFONE,
@@ -59,6 +59,7 @@ public class BaseDB extends SQLiteOpenHelper {
 
     public static final String[] TBL_CLIENTE_COLUNAS_JURIDICA = {
             BaseDB.CLIENTE_ID,
+            BaseDB.CLIENTE_TIPO,
             BaseDB.CLIENTE_RAZAO_SOCIAL,
             BaseDB.CLIENTE_FANTASIA,
             BaseDB.CLIENTE_CNPJ,
@@ -69,7 +70,6 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_COMPLEMENTO,
             BaseDB.CLIENTE_BAIRRO,
             BaseDB.CLIENTE_CIDADE,
-            BaseDB.CLIENTE_ESTADO,
             BaseDB.CLIENTE_CONTATO,
             BaseDB.CLIENTE_ANIVER,
             BaseDB.CLIENTE_TELEFONE,
@@ -79,6 +79,7 @@ public class BaseDB extends SQLiteOpenHelper {
 
     public static final String[] TBL_CLIENTE_COLUNAS_FISICA = {
             BaseDB.CLIENTE_ID,
+            BaseDB.CLIENTE_TIPO,
             BaseDB.CLIENTE_RAZAO_SOCIAL,
             BaseDB.CLIENTE_FANTASIA,
             BaseDB.CLIENTE_RG,
@@ -89,7 +90,6 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_COMPLEMENTO,
             BaseDB.CLIENTE_BAIRRO,
             BaseDB.CLIENTE_CIDADE,
-            BaseDB.CLIENTE_ESTADO,
             BaseDB.CLIENTE_CONTATO,
             BaseDB.CLIENTE_ANIVER,
             BaseDB.CLIENTE_TELEFONE,
@@ -104,14 +104,22 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_BAIRRO,
             BaseDB.CLIENTE_CIDADE};
 
+    public static final String[] TBL_CLIENTE_COLUNAS_SOMENTE_O_ID = {
+            BaseDB.CLIENTE_ID};
+
+    public static final String[] TBL_CLIENTE_COLUNAS_CONSULTA_TIPO = {
+            BaseDB.CLIENTE_ID,
+            BaseDB.CLIENTE_TIPO};
+
     //Banco + name + version
     public static final String BANCO_NOME = "estoque.sqlite";
-    public static final int BANCO_VERSAO = 5;
+    public static final int BANCO_VERSAO = 10;
 
     //DDL - criação da(s) tabela(s)
     public static final String CREATE_CLIENTE =
             "create table "+TBL_CLIENTE+"(" +
                     CLIENTE_ID+" integer AUTO_INCREMENT primary key, "+
+                    CLIENTE_TIPO+" text not null, "+
                     CLIENTE_RAZAO_SOCIAL+" text not null, "+
                     CLIENTE_FANTASIA+" text not null, "+
                     CLIENTE_CNPJ+" integer, "+
@@ -124,7 +132,6 @@ public class BaseDB extends SQLiteOpenHelper {
                     CLIENTE_COMPLEMENTO+" text,"+
                     CLIENTE_BAIRRO+" text,"+
                     CLIENTE_CIDADE+" text,"+
-                    CLIENTE_ESTADO+" text,"+
                     CLIENTE_CONTATO+" text,"+
                     CLIENTE_ANIVER+" text, "+
                     CLIENTE_TELEFONE+" integer,"+

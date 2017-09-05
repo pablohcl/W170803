@@ -89,7 +89,11 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                int codigoNovo = cliDB.getCodigoNovo();
+
                 c = new ClientesFisica();
+                c.setCodigoCliente(codigoNovo);
+                c.setTipoCliente("fisica");
                 c.setRazaoSocial(etRazaoSocial.getText().toString());
                 c.setFantasia(etFantasia.getText().toString());
                 c.setCpf(Long.parseLong(etCpf.getText().toString()));

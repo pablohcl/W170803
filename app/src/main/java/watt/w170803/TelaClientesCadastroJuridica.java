@@ -87,7 +87,11 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                int codigoNovo = cliDB.getCodigoNovo();
+
                 c = new ClientesJuridica();
+                c.setCodigoCliente(codigoNovo);
+                c.setTipoCliente("juridica");
                 c.setRazaoSocial(etRazaoSocial.getText().toString());
                 c.setFantasia(etFantasia.getText().toString());
                 c.setCnpj(Long.parseLong(etCnpj.getText().toString()));
