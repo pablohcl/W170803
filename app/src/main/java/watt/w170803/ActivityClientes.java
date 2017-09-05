@@ -76,13 +76,9 @@ public class ActivityClientes extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(opcaoSelecionada==0){
                             Intent intent = new Intent(getContext(), TelaClientesCadastroFisica.class);
-                            Bundle params = new Bundle();
-                            intent.putExtras(params);
                             startActivity(intent);
                         }else{
                             Intent intent = new Intent(getContext(), TelaClientesCadastroJuridica.class);
-                            Bundle params = new Bundle();
-                            intent.putExtras(params);
                             startActivity(intent);
                         }
                     }

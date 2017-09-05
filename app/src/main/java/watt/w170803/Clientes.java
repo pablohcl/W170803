@@ -13,23 +13,23 @@ public class Clientes implements Serializable {
     private String tipoCliente;
     private String razaoSocial;
     private String fantasia;
-    private Integer cep;
+    private String cep;
     private String endereco;
-    private Integer numero;
+    private String numero;
     private String complemento;
     private String bairro;
     private String cidade;
     private String contato;
     private String aniver;
-    private Integer telefone;
-    private Integer telefone2;
+    private String telefone;
+    private String telefone2;
     private String email;
     private String obs;
 
     public Clientes() {
     }
 
-    public Clientes(long codigoCliente, String tipoCliente, String razaoSocial, String fantasia, Integer cep, String endereco, Integer numero, String complemento, String bairro, String cidade, String contato, String aniver, Integer telefone, Integer telefone2, String email, String obs) {
+    public Clientes(long codigoCliente, String tipoCliente, String razaoSocial, String fantasia, String cep, String endereco, String numero, String complemento, String bairro, String cidade, String contato, String aniver, String telefone, String telefone2, String email, String obs) {
         this.codigoCliente = codigoCliente;
         this.tipoCliente = tipoCliente;
         this.razaoSocial = razaoSocial;
@@ -80,11 +80,11 @@ public class Clientes implements Serializable {
         this.fantasia = fantasia;
     }
 
-    public Integer getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(Integer cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -96,11 +96,11 @@ public class Clientes implements Serializable {
         this.endereco = endereco;
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -144,19 +144,19 @@ public class Clientes implements Serializable {
         this.aniver = aniver;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public Integer getTelefone2() {
+    public String getTelefone2() {
         return telefone2;
     }
 
-    public void setTelefone2(Integer telefone2) {
+    public void setTelefone2(String telefone2) {
         this.telefone2 = telefone2;
     }
 

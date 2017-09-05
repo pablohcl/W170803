@@ -38,7 +38,7 @@ public class ClientesAdapter extends RecyclerView.Adapter {
         Clientes cli = clientes.get(position);
 
         hold.tvIdCliente.setText(String.valueOf(cli.getCodigoCliente()));
-        hold.tvRazaoSocial.setText(cli.getRazaoSocial());
+        hold.tvRazaoSocial.setText(String.valueOf(cli.getRazaoSocial()));
         hold.tvFantasia.setText(String.valueOf(cli.getFantasia()));
         hold.tvBairro.setText(String.valueOf(cli.getBairro()));
         hold.tvCidade.setText(String.valueOf(cli.getCidade()));

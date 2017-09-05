@@ -46,8 +46,6 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_clientes_cadastro_juridica);
 
-        Bundle args = getIntent().getExtras();
-
         // Referências
         etRazaoSocial = (EditText) findViewById(R.id.et_razao_social);
         etFantasia = (EditText) findViewById(R.id.et_fantasia);
@@ -86,34 +84,37 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         btnClienteSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(etRazaoSocial!=null && etFantasia!=null && etCnpj!=null && etEndereco!=null && etBairro!=null && etCidade!=null && etContato!=null && etTelefone!=null) {
+                    int codigoNovo = cliDB.getCodigoNovo();
 
-                int codigoNovo = cliDB.getCodigoNovo();
+                    c = new ClientesJuridica();
+                    c.setCodigoCliente(codigoNovo);
+                    c.setTipoCliente("juridica");
+                    c.setRazaoSocial(etRazaoSocial.getText().toString());
+                    c.setFantasia(etFantasia.getText().toString());
+                    c.setCnpj(etCnpj.getText().toString());
+                    c.setInscricaoEstadual(etInscricaoEstadual.getText().toString());
+                    c.setCep(etCep.getText().toString());
+                    c.setEndereco(etEndereco.getText().toString());
+                    c.setNumero(etNumero.getText().toString());
+                    c.setComplemento(etComplemento.getText().toString());
+                    c.setBairro(etBairro.getText().toString());
+                    c.setCidade(etCidade.getText().toString());
+                    c.setContato(etContato.getText().toString());
+                    c.setAniver(etAniver.getText().toString());
+                    c.setTelefone(etTelefone.getText().toString());
+                    c.setTelefone2(etTelefone2.getText().toString());
+                    c.setEmail(etEmail.getText().toString());
+                    c.setObs(etObs.getText().toString());
 
-                c = new ClientesJuridica();
-                c.setCodigoCliente(codigoNovo);
-                c.setTipoCliente("juridica");
-                c.setRazaoSocial(etRazaoSocial.getText().toString());
-                c.setFantasia(etFantasia.getText().toString());
-                c.setCnpj(Long.parseLong(etCnpj.getText().toString()));
-                c.setInscricaoEstadual(Long.parseLong(etInscricaoEstadual.getText().toString()));
-                c.setCep(Integer.parseInt(etCep.getText().toString()));
-                c.setEndereco(etEndereco.getText().toString());
-                c.setNumero(Integer.parseInt(etNumero.getText().toString()));
-                c.setComplemento(etComplemento.getText().toString());
-                c.setBairro(etBairro.getText().toString());
-                c.setCidade(etCidade.getText().toString());
-                c.setContato(etContato.getText().toString());
-                c.setAniver(etAniver.getText().toString());
-                c.setTelefone(Integer.parseInt(etTelefone.getText().toString()));
-                c.setTelefone2(Integer.parseInt(etTelefone2.getText().toString()));
-                c.setEmail(etEmail.getText().toString());
-                c.setObs(etObs.getText().toString());
+                    // Enviando para metodo cadastrar
+                    cliDB.inserir(c);
 
-                // Enviando para metodo cadastrar
-                cliDB.inserir(c);
-
-                Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
-                limpar();
+                    Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
+                    limpar();
+                }else{
+                    Toast.makeText(TelaClientesCadastroJuridica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

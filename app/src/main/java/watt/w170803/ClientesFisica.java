@@ -6,30 +6,30 @@ package watt.w170803;
 
 public class ClientesFisica extends Clientes {
 
-    private Long cpf;
-    private Long rg;
+    private String cpf;
+    private String rg;
 
     public ClientesFisica(){}
 
-    public ClientesFisica(long codigoCliente, String tipoCliente, String razaoSocial, String fantasia, Integer cep, String endereco, Integer numero, String complemento, String bairro, String cidade, String contato, String aniver, Integer telefone, Integer telefone2, String email, String obs, Long cpf, Long rg) {
+    public ClientesFisica(long codigoCliente, String tipoCliente, String razaoSocial, String fantasia, String cep, String endereco, String numero, String complemento, String bairro, String cidade, String contato, String aniver, String telefone, String telefone2, String email, String obs, String cpf, String rg) {
         super(codigoCliente, tipoCliente, razaoSocial, fantasia, cep, endereco, numero, complemento, bairro, cidade, contato, aniver, telefone, telefone2, email, obs);
         this.cpf = cpf;
         this.rg = rg;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public Long getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(Long rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 }

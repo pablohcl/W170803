@@ -122,20 +122,20 @@ public class BaseDB extends SQLiteOpenHelper {
                     CLIENTE_TIPO+" text not null, "+
                     CLIENTE_RAZAO_SOCIAL+" text not null, "+
                     CLIENTE_FANTASIA+" text not null, "+
-                    CLIENTE_CNPJ+" integer, "+
-                    CLIENTE_INSCRICAO_ESTADUAL+" integer,"+
-                    CLIENTE_CPF+" integer, "+
-                    CLIENTE_RG+" integer, "+
-                    CLIENTE_CEP+" integer, "+
+                    CLIENTE_CNPJ+" text, "+
+                    CLIENTE_INSCRICAO_ESTADUAL+" text,"+
+                    CLIENTE_CPF+" text, "+
+                    CLIENTE_RG+" text, "+
+                    CLIENTE_CEP+" text, "+
                     CLIENTE_ENDERECO+" text, "+
-                    CLIENTE_NUMERO+" integer, "+
+                    CLIENTE_NUMERO+" text, "+
                     CLIENTE_COMPLEMENTO+" text,"+
                     CLIENTE_BAIRRO+" text,"+
                     CLIENTE_CIDADE+" text,"+
                     CLIENTE_CONTATO+" text,"+
                     CLIENTE_ANIVER+" text, "+
-                    CLIENTE_TELEFONE+" integer,"+
-                    CLIENTE_TELEFONE2+" integer,"+
+                    CLIENTE_TELEFONE+" text,"+
+                    CLIENTE_TELEFONE2+" text,"+
                     CLIENTE_EMAIL+" text,"+
                     CLIENTE_OBS+" text"+
             ");";

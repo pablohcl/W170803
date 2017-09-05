@@ -1,5 +1,6 @@
 package watt.w170803;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.support.v4.app.DialogFragment;
@@ -48,8 +49,6 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         //up navigation
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Bundle args = getIntent().getExtras();
-
         // Referências
         etRazaoSocial = (EditText) findViewById(R.id.et_razao_social);
         etFantasia = (EditText) findViewById(R.id.et_fantasia);
@@ -88,34 +87,37 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         btnClienteSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* NAO FUNCIONA if(etRazaoSocial.getText().toString()!="" &&  etFantasia.getText().toString()!="" && etCpf.getText().toString()!="" && etEndereco.getText().toString()!="" && etBairro.getText().toString()!="" && etCidade.getText().toString()!="" && etContato.getText().toString()!="" && etTelefone.getText().toString()!="") {
+                    int codigoNovo = cliDB.getCodigoNovo();
 
-                int codigoNovo = cliDB.getCodigoNovo();
+                    c = new ClientesFisica();
+                    c.setCodigoCliente(codigoNovo);
+                    c.setTipoCliente("fisica");
+                    c.setRazaoSocial(etRazaoSocial.getText().toString());
+                    c.setFantasia(etFantasia.getText().toString());
+                    c.setCpf(etCpf.getText().toString());
+                    c.setRg(etRg.getText().toString());
+                    c.setCep(etCep.getText().toString());
+                    c.setEndereco(etEndereco.getText().toString());
+                    c.setNumero(etNumero.getText().toString());
+                    c.setComplemento(etComplemento.getText().toString());
+                    c.setBairro(etBairro.getText().toString());
+                    c.setCidade(etCidade.getText().toString());
+                    c.setContato(etContato.getText().toString());
+                    c.setAniver(etAniver.getText().toString());
+                    c.setTelefone(etTelefone.getText().toString());
+                    c.setTelefone2(etTelefone2.getText().toString());
+                    c.setEmail(etEmail.getText().toString());
+                    c.setObs(etObs.getText().toString());
 
-                c = new ClientesFisica();
-                c.setCodigoCliente(codigoNovo);
-                c.setTipoCliente("fisica");
-                c.setRazaoSocial(etRazaoSocial.getText().toString());
-                c.setFantasia(etFantasia.getText().toString());
-                c.setCpf(Long.parseLong(etCpf.getText().toString()));
-                c.setRg(Long.parseLong(etRg.getText().toString()));
-                c.setCep(Integer.parseInt(etCep.getText().toString()));
-                c.setEndereco(etEndereco.getText().toString());
-                c.setNumero(Integer.parseInt(etNumero.getText().toString()));
-                c.setComplemento(etComplemento.getText().toString());
-                c.setBairro(etBairro.getText().toString());
-                c.setCidade(etCidade.getText().toString());
-                c.setContato(etContato.getText().toString());
-                c.setAniver(etAniver.getText().toString());
-                c.setTelefone(Integer.parseInt(etTelefone.getText().toString()));
-                c.setTelefone2(Integer.parseInt(etTelefone2.getText().toString()));
-                c.setEmail(etEmail.getText().toString());
-                c.setObs(etObs.getText().toString());
+                    // Enviando para metodo cadastrar
+                    cliDB.inserir(c);
 
-                // Enviando para metodo cadastrar
-                cliDB.inserir(c);
-
-                Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
-                limpar();
+                    Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
+                    limpar();
+                }else{
+                    Toast.makeText(TelaClientesCadastroFisica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
+                }*/
             }
         });
 
