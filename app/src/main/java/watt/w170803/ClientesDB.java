@@ -80,6 +80,7 @@ public class ClientesDB {
         return database.insert(BaseDB.TBL_CLIENTE, null, cv);
     }
 
+
     public ArrayList<Clientes> consultar(){
 
         ArrayList<Clientes> cliAux = new ArrayList<>();
@@ -109,6 +110,33 @@ public class ClientesDB {
 
         cursor.close();
         return cliAux;
+    }
+
+    public ArrayList<Clientes> consultar(String[] campo, String busca){
+        ArrayList<Clientes> resultado = new ArrayList<>();
+
+        Cursor cursor = database.query(
+                BaseDB.TBL_CLIENTE,
+                BaseDB.TBL_CLIENTE_COLUNAS_CONSULTA_FISICA,
+                campo[0]+" LIKE '%"+busca+"%' OR "+campo[1]+" LIKE '%"+busca+"%'",
+                null,
+                null,
+                null,
+                campo[0]
+        );
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            Clientes c = new Clientes();
+            c.setCodigoCliente(cursor.getInt(0));
+            c.setRazaoSocial(cursor.getString(1));
+            c.setFantasia(cursor.getString(2));
+            c.setCidade(cursor.getString(3));
+            c.setBairro(cursor.getString(4));
+            cursor.moveToNext();
+            resultado.add(c);
+        }
+        cursor.close();
+        return resultado;
     }
 
     public ClientesJuridica consultarTotalJuridica(long codigo){

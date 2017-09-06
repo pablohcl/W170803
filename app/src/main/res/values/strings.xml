@@ -16,6 +16,12 @@
     <string name="alert_botao_sim">sim</string>
     <string name="alert_botao_nao">nao</string>
 
+    <!-- Array alert dialog tipo cliente cadastro -->
     <string name="alert_pessoa_fisica">Pessoa Física (CPF e RG)</string>
     <string name="alert_pessoa_juridica">Pessoa Jurídica (CNPJ e Inscr.)</string>
+
+    <!-- Array alertdialog campo cliente busca -->
+    <string name="alert_campo_razao">Razão social / Fantasia</string>
+    <string name="alert_campo_cnpj">CNPJ / CPF</string>
+    <string name="alert_campo_endereco">Endereço / Cidade</string>
 </resources>

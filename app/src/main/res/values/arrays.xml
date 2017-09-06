@@ -6,4 +6,10 @@
         <item>@string/alert_pessoa_juridica</item>
     </string-array>
 
+    <string-array name="array_alert_campo_busca_clientes">
+        <item>@string/alert_campo_razao</item>
+        <item>@string/alert_campo_cnpj</item>
+        <item>@string/alert_campo_endereco</item>
+    </string-array>
+
 </resources>
