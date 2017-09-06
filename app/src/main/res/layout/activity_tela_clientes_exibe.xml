@@ -36,7 +36,7 @@
                 android:id="@+id/tv_id_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:id="@+id/tv_razao_social_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:id="@+id/tv_fantasia_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:id="@+id/tv_cpf_cnpj_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:id="@+id/tv_rg_inscr_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -111,7 +111,7 @@
                 android:id="@+id/tv_cep_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -126,7 +126,7 @@
                 android:id="@+id/tv_endereco_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -141,7 +141,7 @@
                 android:id="@+id/tv_numero_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -156,7 +156,7 @@
                 android:id="@+id/tv_complemento_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -171,7 +171,7 @@
                 android:id="@+id/tv_bairro_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -186,7 +186,7 @@
                 android:id="@+id/tv_cidade_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -201,7 +201,7 @@
                 android:id="@+id/tv_contato_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -216,7 +216,7 @@
                 android:id="@+id/tv_aniver_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -231,14 +231,14 @@
                 android:id="@+id/tv_telefone_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_telefone2_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -253,7 +253,7 @@
                 android:id="@+id/tv_email_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -269,7 +269,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:text="TextView" />
         </LinearLayout>
     </ScrollView>

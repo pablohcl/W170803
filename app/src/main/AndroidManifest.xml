@@ -31,7 +31,8 @@
             android:name=".TelaClientesCadastroJuridica"
             android:label="Pessoa jurídica"
             android:parentActivityName=".ActivityClientes" />
-        <activity android:name=".TelaClientesExibe"></activity>
+        <activity android:name=".TelaClientesExibe"
+            android:label="Dados do cliente"></activity>
     </application>
 
 </manifest>

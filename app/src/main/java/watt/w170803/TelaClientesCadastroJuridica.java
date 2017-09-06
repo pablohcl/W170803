@@ -84,7 +84,12 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         btnClienteSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(etRazaoSocial!=null && etFantasia!=null && etCnpj!=null && etEndereco!=null && etBairro!=null && etCidade!=null && etContato!=null && etTelefone!=null) {
+                if(etRazaoSocial.getText().toString().isEmpty() ||  etFantasia.getText().toString().isEmpty() || etCnpj.getText().toString().isEmpty() || etEndereco.getText().toString().isEmpty() || etBairro.getText().toString().isEmpty() || etCidade.getText().toString().isEmpty() || etContato.getText().toString().isEmpty() || etTelefone.getText().toString().isEmpty()) {
+
+                    Toast.makeText(TelaClientesCadastroJuridica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
+
+                }else {
+
                     int codigoNovo = cliDB.getCodigoNovo();
 
                     c = new ClientesJuridica();
@@ -112,8 +117,6 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
 
                     Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
                     limpar();
-                }else{
-                    Toast.makeText(TelaClientesCadastroJuridica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
                 }
             }
         });

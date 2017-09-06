@@ -1,7 +1,9 @@
 package watt.w170803;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,12 +32,26 @@ public class TelaClientesExibe extends AppCompatActivity {
     private TextView tvObs;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish(); // Finaliza a Activity atual
+                break;
+            default:break;
+        }
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_clientes_exibe);
 
         Bundle args = getIntent().getExtras();
         clicado = args.getLong("clicado");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         tvIdCliente = (TextView) findViewById(R.id.tv_id_clientes_exibe);
         tvRazaoSocial = (TextView) findViewById(R.id.tv_razao_social_clientes_exibe);

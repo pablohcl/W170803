@@ -87,7 +87,11 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         btnClienteSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /* NAO FUNCIONA if(etRazaoSocial.getText().toString()!="" &&  etFantasia.getText().toString()!="" && etCpf.getText().toString()!="" && etEndereco.getText().toString()!="" && etBairro.getText().toString()!="" && etCidade.getText().toString()!="" && etContato.getText().toString()!="" && etTelefone.getText().toString()!="") {
+                if(etRazaoSocial.getText().toString().isEmpty() ||  etFantasia.getText().toString().isEmpty() || etCpf.getText().toString().isEmpty() || etEndereco.getText().toString().isEmpty() || etBairro.getText().toString().isEmpty() || etCidade.getText().toString().isEmpty() || etContato.getText().toString().isEmpty() || etTelefone.getText().toString().isEmpty()) {
+
+                    Toast.makeText(TelaClientesCadastroFisica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
+
+                }else{
                     int codigoNovo = cliDB.getCodigoNovo();
 
                     c = new ClientesFisica();
@@ -115,9 +119,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
 
                     Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
                     limpar();
-                }else{
-                    Toast.makeText(TelaClientesCadastroFisica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
-                }*/
+                }
             }
         });
 
