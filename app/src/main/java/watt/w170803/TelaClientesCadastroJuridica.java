@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.clientes.ClientesJuridica;
+
 public class TelaClientesCadastroJuridica extends AppCompatActivity {
 
     private EditText etRazaoSocial;

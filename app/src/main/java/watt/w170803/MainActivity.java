@@ -2,6 +2,8 @@ package watt.w170803;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,10 +19,23 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import watt.w170803.util.Atualizador;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button btnClientes;
+    private Button btnPedidos;
+    private Button btnProdutos;
+    private Button btnAtualizar;
+
+    private Context context;
+    private Resources resources;
+    private InputStream inputStream;
+    private Atualizador atualizador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +46,43 @@ public class MainActivity extends AppCompatActivity
 
         // Referências
         btnClientes = (Button) findViewById(R.id.btn_clientes);
+        btnPedidos = (Button) findViewById(R.id.btn_pedidos);
+        btnProdutos = (Button) findViewById(R.id.btn_produtos);
+        btnAtualizar = (Button) findViewById(R.id.btn_atualizar);
+        context = getContext();
+        resources = context.getResources();
+        inputStream = resources.openRawResource(R.raw.produtos);
+        atualizador = new Atualizador(context);
+
 
         btnClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ActivityClientes.class);
                 startActivity(intent);
+            }
+        });
+
+        btnPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ActivityPedidos.class);
+                startActivity(intent);
+            }
+        });
+
+        btnProdutos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ActivityProdutos.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAtualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                atualizador.atualizaProdutos(inputStream);
             }
         });
 

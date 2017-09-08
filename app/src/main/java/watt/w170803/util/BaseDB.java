@@ -1,4 +1,4 @@
-package watt.w170803;
+package watt.w170803.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BaseDB extends SQLiteOpenHelper {
 
-    //Tabela
+    //Tabela cliente
     public static final String TBL_CLIENTE = "cliente";
     public static final String CLIENTE_ID = "codigoCliente";
     public static final String CLIENTE_TIPO = "tipo";
@@ -33,8 +33,7 @@ public class BaseDB extends SQLiteOpenHelper {
     public static final String CLIENTE_EMAIL = "email";
     public static final String CLIENTE_OBS = "obs";
 
-
-    /* Colunas da Tabela PRODUTO. São públicos para qualquer classe. */
+    /* Colunas da Tabela CLIENTE. São públicos para qualquer classe. */
     public static final String[] TBL_CLIENTE_COLUNAS = {
             BaseDB.CLIENTE_ID,
             BaseDB.CLIENTE_TIPO,
@@ -111,10 +110,6 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_ID,
             BaseDB.CLIENTE_TIPO};
 
-    //Banco + name + version
-    public static final String BANCO_NOME = "estoque.sqlite";
-    public static final int BANCO_VERSAO = 10;
-
     //DDL - criação da(s) tabela(s)
     public static final String CREATE_CLIENTE =
             "create table "+TBL_CLIENTE+"(" +
@@ -144,6 +139,50 @@ public class BaseDB extends SQLiteOpenHelper {
     public static final String DROP_CLIENTES =
             "drop table if exists " + TBL_CLIENTE;
 
+
+
+
+    /* ############### Tabela produtos ################ */
+
+    public static final String TBL_PRODUTOS = "produtos";
+    public static final String PRODUTOS_ID = "id_produto";
+    public static final String PRODUTOS_DESCRICAO = "descricao";
+    public static final String PRODUTOS_UND_MEDIDA = "und_medida";
+    public static final String PRODUTOS_PRECO = "preco";
+    public static final String PRODUTOS_PRECO_MIN = "preco_min";
+    public static final String PRODUTOS_PRECO_SUGERIDO = "preco_sugerido";
+
+    public static final String[] TBL_PRODUTOS_COLUNAS = {
+            BaseDB.PRODUTOS_ID,
+            BaseDB.PRODUTOS_DESCRICAO,
+            BaseDB.PRODUTOS_UND_MEDIDA,
+            BaseDB.PRODUTOS_PRECO,
+            BaseDB.PRODUTOS_PRECO_MIN,
+            BaseDB.PRODUTOS_PRECO_SUGERIDO
+    };
+
+    //DDL - criação da(s) tabela(s)
+    public static final String CREATE_PRODUTOS =
+            "CREATE TABLE "+TBL_PRODUTOS+"(" +
+                    PRODUTOS_ID+" integer AUTO_INCREMENT primary key, "+
+                    PRODUTOS_DESCRICAO+" text not null, "+
+                    PRODUTOS_UND_MEDIDA+" text not null, "+
+                    PRODUTOS_PRECO+" double not null, "+
+                    PRODUTOS_PRECO_MIN+" double, "+
+                    PRODUTOS_PRECO_SUGERIDO+" double"+
+                    ");";
+
+    //DDL - exclusão da(s) tabela(s)
+    public static final String DROP_PRODUTOS =
+            "drop table if exists " + TBL_PRODUTOS;
+
+
+
+
+    //Banco + name + version
+    public static final String BANCO_NOME = "watt.sqlite";
+    public static final int BANCO_VERSAO = 12;
+
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);
     }
@@ -152,11 +191,13 @@ public class BaseDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         /* Criando a tabela cliente */
         db.execSQL(CREATE_CLIENTE);
+        db.execSQL(CREATE_PRODUTOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_CLIENTES);
+        db.execSQL(DROP_PRODUTOS);
         onCreate(db);
     }
 }

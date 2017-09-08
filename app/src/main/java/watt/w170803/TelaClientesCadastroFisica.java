@@ -1,6 +1,5 @@
 package watt.w170803;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.support.v4.app.DialogFragment;
@@ -13,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Calendar;
+
+import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.clientes.ClientesFisica;
 
 public class TelaClientesCadastroFisica extends AppCompatActivity {
 

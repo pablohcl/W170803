@@ -1,12 +1,13 @@
-package watt.w170803;
+package watt.w170803.util.clientes;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import watt.w170803.util.BaseDB;
 
 /**
  * Created by Usuario on 17/08/2017.
@@ -201,8 +202,8 @@ public class ClientesDB {
             c.setTipoCliente(cursor.getString(1));
             c.setRazaoSocial(cursor.getString(2));
             c.setFantasia(cursor.getString(3));
-            c.setCpf(cursor.getString(4));
-            c.setRg(cursor.getString(5));
+            c.setCpf(cursor.getString(5));
+            c.setRg(cursor.getString(4));
             c.setCep(cursor.getString(6));
             c.setEndereco(cursor.getString(7));
             c.setNumero(cursor.getString(8));

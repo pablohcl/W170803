@@ -1,4 +1,4 @@
-package watt.w170803;
+package watt.w170803.util.clientes;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import watt.w170803.R;
+import watt.w170803.TelaClientesExibe;
+import watt.w170803.util.clientes.Clientes;
 
 /**
  * Created by Usuario on 31/08/2017.

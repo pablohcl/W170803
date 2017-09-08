@@ -1,11 +1,13 @@
 package watt.w170803;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.clientes.ClientesFisica;
+import watt.w170803.util.clientes.ClientesJuridica;
 
 public class TelaClientesExibe extends AppCompatActivity {
 

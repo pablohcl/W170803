@@ -1,4 +1,6 @@
-package watt.w170803;
+package watt.w170803.util.clientes;
+
+import watt.w170803.util.clientes.Clientes;
 
 /**
  * Created by Usuario on 09/08/2017.
