@@ -26,6 +26,11 @@ public class ProdutoDB {
         database = dbHelper.getWritableDatabase();
     }
 
+    public void recriarTblProdutos(){
+        database.execSQL(BaseDB.DROP_PRODUTOS);
+        database.execSQL(BaseDB.CREATE_PRODUTOS);
+    }
+
     public void fecharBanco(){
         dbHelper.close();
     }
