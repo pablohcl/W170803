@@ -2,11 +2,8 @@ package watt.w170803;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,12 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
 
-import java.io.IOException;
 import java.io.InputStream;
-
-import watt.w170803.util.Atualizador;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +28,6 @@ public class MainActivity extends AppCompatActivity
     private Context context;
     private Resources resources;
     private InputStream inputStream;
-    private Atualizador atualizador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +41,6 @@ public class MainActivity extends AppCompatActivity
         btnPedidos = (Button) findViewById(R.id.btn_pedidos);
         btnProdutos = (Button) findViewById(R.id.btn_produtos);
         btnAtualizar = (Button) findViewById(R.id.btn_atualizar);
-        context = getContext();
-        resources = context.getResources();
-        inputStream = resources.openRawResource(R.raw.produtos);
-        atualizador = new Atualizador(context);
-
 
         btnClientes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +69,8 @@ public class MainActivity extends AppCompatActivity
         btnAtualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                atualizador.atualizaProdutos(inputStream);
+                Intent intent = new Intent(getContext(), Atualizador.class);
+                startActivity(intent);
             }
         });
 
@@ -156,7 +144,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private Context getContext(){
+    public Context getContext(){
         return this;
     }
 }

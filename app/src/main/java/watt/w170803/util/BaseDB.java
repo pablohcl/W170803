@@ -181,7 +181,7 @@ public class BaseDB extends SQLiteOpenHelper {
 
     //Banco + name + version
     public static final String BANCO_NOME = "watt.sqlite";
-    public static final int BANCO_VERSAO = 12;
+    public static final int BANCO_VERSAO = 16;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);

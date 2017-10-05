@@ -66,7 +66,7 @@ public class ProdutoDB {
             p.setUndMedida(cursor.getString(2));
             p.setPreco(cursor.getDouble(3));
             p.setPrecoMin(cursor.getDouble(4));
-            p.setPrecoSugerido(cursor.getDouble(4));
+            p.setPrecoSugerido(cursor.getDouble(5));
             cursor.moveToNext();
             proAux.add(p);
         }
