@@ -1,4 +1,4 @@
-package watt.w170803.util;
+package watt.w170803.util.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -177,9 +177,8 @@ public class BaseDB extends SQLiteOpenHelper {
             "drop table if exists " + TBL_PRODUTOS;
 
 
+    // BANCO, NOME, VERSAO ###########################################################
 
-
-    //Banco + name + version
     public static final String BANCO_NOME = "watt.sqlite";
     public static final int BANCO_VERSAO = 16;
 

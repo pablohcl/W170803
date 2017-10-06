@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.db.ClientesDB;
 import watt.w170803.util.clientes.ClientesFisica;
 import watt.w170803.util.clientes.ClientesJuridica;
 
@@ -49,12 +49,14 @@ public class TelaClientesExibe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_clientes_exibe);
 
+        // RECEBENDO OS PARAMETROS DA ACTIVITY #####
         Bundle args = getIntent().getExtras();
         clicado = args.getLong("clicado");
 
+        // MOSTRANDO O BOTAO VOLTAR #####
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        // REFERENCIAS #####
         tvIdCliente = (TextView) findViewById(R.id.tv_id_clientes_exibe);
         tvRazaoSocial = (TextView) findViewById(R.id.tv_razao_social_clientes_exibe);
         tvFantasia = (TextView) findViewById(R.id.tv_fantasia_clientes_exibe);
@@ -73,6 +75,7 @@ public class TelaClientesExibe extends AppCompatActivity {
         tvEmail = (TextView) findViewById(R.id.tv_email_clientes_exibe);
         tvObs = (TextView) findViewById(R.id.tv_obs_clientes_exibe);
 
+        // ABRINDO O BANCO E CONSULTANDO OS DADOS DO CLIENTE SELECIONADO #####
         cDB = new ClientesDB(this);
         cDB.abrirBanco();
         tipoCliente = cDB.consultaTipoCliente(clicado);
@@ -122,5 +125,8 @@ public class TelaClientesExibe extends AppCompatActivity {
         }else{
             tvRazaoSocial.setText("Erro, cliente com o campo TIPO nulo.");
         }
+
+        // FECHANDO O BANCO #####
+        cDB.fecharBanco();
     }
 }

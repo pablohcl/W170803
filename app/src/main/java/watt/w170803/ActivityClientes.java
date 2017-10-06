@@ -15,10 +15,10 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-import watt.w170803.util.BaseDB;
+import watt.w170803.util.db.BaseDB;
 import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.ClientesAdapter;
-import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.db.ClientesDB;
 
 public class ActivityClientes extends AppCompatActivity {
 
@@ -51,12 +51,15 @@ public class ActivityClientes extends AppCompatActivity {
         btnNovoCliente = (Button) findViewById(R.id.btn_novo_cliente);
         etBuscaClientes = (EditText) findViewById(R.id.et_busca_clientes);
         imgBtnTipoBuscaClientes = (ImageButton) findViewById(R.id.img_btn_campo_cliente_busca);
-
-        campoBuscaSelecionado = new String[2];
-
         cDAO = new ClientesDB(this);
-        cDAO.abrirBanco();
+        clientes = new ArrayList<>();
 
+        // MOSTRA TODOS OS CLIENTES CADASTRADOS @@@@@
+        mostrarTodos();
+        // MOSTRA TODOS OS CLIENTES CADASTRADOS #####
+
+        // ALERT DIALOG PARA SELECIONAR CAMPOS PARA A BUSCA @@@@@
+        campoBuscaSelecionado = new String[2];
         campoBuscaSelecionado[0] = BaseDB.CLIENTE_RAZAO_SOCIAL;
         campoBuscaSelecionado[1] = BaseDB.CLIENTE_FANTASIA;
         imgBtnTipoBuscaClientes.setOnClickListener(new View.OnClickListener() {
@@ -101,11 +104,9 @@ public class ActivityClientes extends AppCompatActivity {
                 msg.show();
             }
         });
+        // ALERT DIALOG PARA SELECIONAR CAMPOS PARA A BUSCA #####
 
-        clientes = new ArrayList<>();
-        clientes = cDAO.consultar();
-        refreshList();
-
+        // CADASTRAR NOVO CLIENTE @@@@@
         btnNovoCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,33 +136,52 @@ public class ActivityClientes extends AppCompatActivity {
                 msg.show();
             }
         });
+        // CADASTRAR NOVO CLIENTE #####
 
+        // BUSCAR CLIENTES @@@@@
         imgBtnBuscaCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(etBuscaClientes.getText().toString().isEmpty()){
-                    clientes = new ArrayList<>();
-                    clientes = cDAO.consultar();
-                    refreshList();
+                    mostrarTodos();
                 }else {
-                    clientes = new ArrayList<Clientes>();
-                    clientes = cDAO.consultar(campoBuscaSelecionado, etBuscaClientes.getText().toString());
-                    adapter.notifyDataSetChanged();
-                    refreshList();
+                    buscarClientes();
                 }
             }
         });
-    }
+        // BUSCAR CLIENTES #####
 
+    }// END OnCreate
+
+    // MÉTODOS DA CLASSE #####
     private Context getContext(){
         return this;
     }
 
+    // ATUALIZA A LISTA EXIBIDA NA TELA
     private void refreshList(){
         adapter = new ClientesAdapter(ActivityClientes.this, clientes);
         recyclerViewClientes.setAdapter(adapter);
         recyclerViewClientes.setHasFixedSize(true);
         recyclerViewClientes.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    // BUSCA TODOS OS CLIENTES CADASTRADOS
+    private void mostrarTodos(){
+
+        cDAO.abrirBanco();
+        clientes = cDAO.consultar();
+        refreshList();
+        cDAO.fecharBanco();
+    }
+
+    // BUSCA OS CLIENTES DE ACORDO COM O DIGITADO
+    private void buscarClientes(){
+
+        cDAO.abrirBanco();
+        clientes = cDAO.consultar(campoBuscaSelecionado, etBuscaClientes.getText().toString());
+        refreshList();
+        cDAO.fecharBanco();
     }
 }

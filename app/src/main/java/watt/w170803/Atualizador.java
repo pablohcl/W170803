@@ -1,7 +1,8 @@
 package watt.w170803;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,26 +11,22 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import cz.msebera.android.httpclient.Header;
-import watt.w170803.util.BaseDB;
 import watt.w170803.util.produtos.Produto;
-import watt.w170803.util.produtos.ProdutoDB;
+import watt.w170803.util.db.ProdutoDB;
 
 public class Atualizador extends AppCompatActivity {
 
-    private String fileName = "produtos";
+    private String fileName;
     ProgressBar progressBar;
-    Context context = getBaseContext();
+    Context context;
     private Button btn;
 
     @Override
@@ -38,6 +35,8 @@ public class Atualizador extends AppCompatActivity {
         setContentView(R.layout.activity_atualizador);
 
         btn = (Button) findViewById(R.id.btn);
+        fileName = "produtos";
+        context = getBaseContext();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +51,9 @@ public class Atualizador extends AppCompatActivity {
     // MÉTODOS DA CLASSE #####
     public void importarWeb(){
 
+        // ESCONDENDO O BOTAO #####
+        btn.setVisibility(View.GONE);
+
         // PROGRESS BAR #####
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.getIndeterminateDrawable();
@@ -65,6 +67,7 @@ public class Atualizador extends AppCompatActivity {
         client.get("http://www.wattdistribuidora.com.br/mobile/produtos.txt", new FileAsyncHttpResponseHandler(fileProd) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
+                progressBar.setVisibility(View.GONE);
                 Log.d("log", "ERRO NA TRANSMISSÃO, STATUS CODE: "+statusCode);
                 Log.d("log", "ASYNC HTTP FINALIZADO");
             }
@@ -120,5 +123,20 @@ public class Atualizador extends AppCompatActivity {
         // PROGRESS BAR #####
         progressBar.setVisibility(View.GONE);
         // PROGRESS BAR #####
+
+        // TORNANDO O BOTAO VIZIVEL NOVAMENTE #####
+        btn.setVisibility(View.VISIBLE);
+
+        // ALERT DIALOG AVISANDO QUE ESTA OK #####
+        AlertDialog.Builder alert = new AlertDialog.Builder(Atualizador.this);
+        alert.setMessage("Transmissão efetuada com sucesso.");
+        alert.setTitle("Alerta");
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        alert.show();
     }
 }

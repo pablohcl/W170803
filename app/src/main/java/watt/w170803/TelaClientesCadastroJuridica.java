@@ -1,7 +1,9 @@
 package watt.w170803;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +15,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.db.ClientesDB;
 import watt.w170803.util.clientes.ClientesJuridica;
 
 public class TelaClientesCadastroJuridica extends AppCompatActivity {
@@ -72,7 +74,6 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
 
         // Instanciando e abrindo o banco
         cliDB = new ClientesDB(this);
-        cliDB.abrirBanco();
 
         // DatePicker
         btnSelecionaData.setOnClickListener(new View.OnClickListener() {
@@ -83,47 +84,15 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
             }
         });//END DatePicker
 
-        // Adicionar
+        // ORGANIZA E INSERE OS DADOS NO BANCO #####
         btnClienteSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(etRazaoSocial.getText().toString().isEmpty() ||  etFantasia.getText().toString().isEmpty() || etCnpj.getText().toString().isEmpty() || etEndereco.getText().toString().isEmpty() || etBairro.getText().toString().isEmpty() || etCidade.getText().toString().isEmpty() || etContato.getText().toString().isEmpty() || etTelefone.getText().toString().isEmpty()) {
-
-                    Toast.makeText(TelaClientesCadastroJuridica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
-
-                }else {
-
-                    int codigoNovo = cliDB.getCodigoNovo();
-
-                    c = new ClientesJuridica();
-                    c.setCodigoCliente(codigoNovo);
-                    c.setTipoCliente("juridica");
-                    c.setRazaoSocial(etRazaoSocial.getText().toString());
-                    c.setFantasia(etFantasia.getText().toString());
-                    c.setCnpj(etCnpj.getText().toString());
-                    c.setInscricaoEstadual(etInscricaoEstadual.getText().toString());
-                    c.setCep(etCep.getText().toString());
-                    c.setEndereco(etEndereco.getText().toString());
-                    c.setNumero(etNumero.getText().toString());
-                    c.setComplemento(etComplemento.getText().toString());
-                    c.setBairro(etBairro.getText().toString());
-                    c.setCidade(etCidade.getText().toString());
-                    c.setContato(etContato.getText().toString());
-                    c.setAniver(etAniver.getText().toString());
-                    c.setTelefone(etTelefone.getText().toString());
-                    c.setTelefone2(etTelefone2.getText().toString());
-                    c.setEmail(etEmail.getText().toString());
-                    c.setObs(etObs.getText().toString());
-
-                    // Enviando para metodo cadastrar
-                    cliDB.inserir(c);
-
-                    Toast.makeText(getBaseContext(), "Cliente cadastrado com sucesso.", Toast.LENGTH_LONG).show();
-                    limpar();
-                }
+                salvarNoBancoJ();
             }
         });
 
+        // FINALIZA A ACTIVITY #####
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,7 +108,6 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onResume();
         //Toda vez que a Activity receber o foco, ativamos a conexão com o BD
-        cliDB.abrirBanco();
     }
 
     @Override
@@ -147,7 +115,6 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onPause();
         //Toda vez que a Activity perder o foco, encerramos a conexão com o BD
-        cliDB.fecharBanco();
     }
 
     private void limpar(){
@@ -167,6 +134,59 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         etTelefone2.setText(null);
         etEmail.setText(null);
         etObs.setText(null);
+    }
+
+    // ORGANIZA E INSERE OS DADOS NO BANCO #####
+    public void salvarNoBancoJ(){
+
+        if(etRazaoSocial.getText().toString().isEmpty() ||  etFantasia.getText().toString().isEmpty() || etCnpj.getText().toString().isEmpty() || etEndereco.getText().toString().isEmpty() || etBairro.getText().toString().isEmpty() || etCidade.getText().toString().isEmpty() || etContato.getText().toString().isEmpty() || etTelefone.getText().toString().isEmpty()) {
+
+            Toast.makeText(TelaClientesCadastroJuridica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
+
+        }else {
+
+            cliDB.abrirBanco();
+
+            int codigoNovo = cliDB.getCodigoNovo();
+
+            c = new ClientesJuridica();
+            c.setCodigoCliente(codigoNovo);
+            c.setTipoCliente("juridica");
+            c.setRazaoSocial(etRazaoSocial.getText().toString());
+            c.setFantasia(etFantasia.getText().toString());
+            c.setCnpj(etCnpj.getText().toString());
+            c.setInscricaoEstadual(etInscricaoEstadual.getText().toString());
+            c.setCep(etCep.getText().toString());
+            c.setEndereco(etEndereco.getText().toString());
+            c.setNumero(etNumero.getText().toString());
+            c.setComplemento(etComplemento.getText().toString());
+            c.setBairro(etBairro.getText().toString());
+            c.setCidade(etCidade.getText().toString());
+            c.setContato(etContato.getText().toString());
+            c.setAniver(etAniver.getText().toString());
+            c.setTelefone(etTelefone.getText().toString());
+            c.setTelefone2(etTelefone2.getText().toString());
+            c.setEmail(etEmail.getText().toString());
+            c.setObs(etObs.getText().toString());
+
+            // Enviando para metodo cadastrar
+            cliDB.inserir(c);
+
+            limpar();
+
+            cliDB.fecharBanco();
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(TelaClientesCadastroJuridica.this);
+            alert.setMessage("Cliente cadastrado com sucesso!");
+            alert.setTitle("Alerta");
+            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            alert.show();
+        }
     }
 
     // DatePicker
