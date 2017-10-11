@@ -87,8 +87,8 @@ public class ActivityClientes extends AppCompatActivity {
                                 break;
                             case 1:
                                 etBuscaClientes.setHint(R.string.alert_campo_cnpj);
-                                campoBuscaSelecionado[0] = BaseDB.CLIENTE_CNPJ;
-                                campoBuscaSelecionado[1] = BaseDB.CLIENTE_CPF;
+                                campoBuscaSelecionado[0] = BaseDB.CLIENTE_CNPJ_OU_CPF;
+                                campoBuscaSelecionado[1] = BaseDB.CLIENTE_CNPJ_OU_CPF;
                                 break;
                             case 2:
                                 etBuscaClientes.setHint(R.string.alert_campo_endereco);

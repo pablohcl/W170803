@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.db.ClientesDB;
-import watt.w170803.util.clientes.ClientesFisica;
 
 public class TelaClientesCadastroFisica extends AppCompatActivity {
 
@@ -40,7 +40,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private Button btnClienteSalvar;
     private Button btnCancelar;
 
-    private ClientesFisica c;
+    private Clientes c;
 
     // Banco
     private ClientesDB cliDB;
@@ -149,25 +149,25 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
 
             int codigoNovo = cliDB.getCodigoNovo();
 
-            c = new ClientesFisica();
+            c = new Clientes();
             c.setCodigoCliente(codigoNovo);
-            c.setTipoCliente("fisica");
             c.setRazaoSocial(etRazaoSocial.getText().toString());
             c.setFantasia(etFantasia.getText().toString());
-            c.setCpf(etCpf.getText().toString());
-            c.setRg(etRg.getText().toString());
+            c.setCnpjOuCpf(etCpf.getText().toString());
+            c.setInscricaoOuRg(etRg.getText().toString());
             c.setCep(etCep.getText().toString());
             c.setEndereco(etEndereco.getText().toString());
             c.setNumero(etNumero.getText().toString());
             c.setComplemento(etComplemento.getText().toString());
             c.setBairro(etBairro.getText().toString());
             c.setCidade(etCidade.getText().toString());
-            c.setContato(etContato.getText().toString());
             c.setAniver(etAniver.getText().toString());
             c.setTelefone(etTelefone.getText().toString());
             c.setTelefone2(etTelefone2.getText().toString());
             c.setEmail(etEmail.getText().toString());
             c.setObs(etObs.getText().toString());
+            c.seteJuridica("FALSO");
+
 
             // Enviando para metodo cadastrar
             cliDB.inserir(c);

@@ -5,15 +5,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.db.ClientesDB;
-import watt.w170803.util.clientes.ClientesFisica;
-import watt.w170803.util.clientes.ClientesJuridica;
 
 public class TelaClientesExibe extends AppCompatActivity {
 
     private ClientesDB cDB;
     private long clicado;
-    private String tipoCliente;
+    private String eJuridica;
 
     private TextView tvIdCliente;
     private TextView tvRazaoSocial;
@@ -78,45 +77,44 @@ public class TelaClientesExibe extends AppCompatActivity {
         // ABRINDO O BANCO E CONSULTANDO OS DADOS DO CLIENTE SELECIONADO #####
         cDB = new ClientesDB(this);
         cDB.abrirBanco();
-        tipoCliente = cDB.consultaTipoCliente(clicado);
+        eJuridica = cDB.consultaTipoCliente(clicado);
 
-        if(tipoCliente.equals("juridica")) {
-            ClientesJuridica cliJur;
-            cliJur = cDB.consultarTotalJuridica(clicado);
+        if(eJuridica.equals("VERDADEIRO")) {
+            Clientes cliJur;
+            cliJur = cDB.consultarTotal(clicado);
 
             tvIdCliente.setText(String.valueOf(cliJur.getCodigoCliente()));
             tvRazaoSocial.setText(cliJur.getRazaoSocial());
             tvFantasia.setText(cliJur.getFantasia());
-            tvCnpjCpf.setText(String.valueOf(cliJur.getCnpj()));
-            tvInscrRg.setText(String.valueOf(cliJur.getInscricaoEstadual()));
+            tvCnpjCpf.setText(String.valueOf(cliJur.getCnpjOuCpf()));
+            tvInscrRg.setText(String.valueOf(cliJur.getInscricaoOuRg()));
             tvCep.setText(String.valueOf(cliJur.getCep()));
             tvEndereco.setText(cliJur.getEndereco());
             tvNumero.setText(String.valueOf(cliJur.getNumero()));
             tvComplemento.setText(cliJur.getComplemento());
             tvBairro.setText(cliJur.getBairro());
             tvCidade.setText(cliJur.getCidade());
-            tvContato.setText(cliJur.getContato());
             tvAniver.setText(cliJur.getAniver());
             tvTelefone.setText(String.valueOf(cliJur.getTelefone()));
             tvTelefone2.setText(String.valueOf(cliJur.getTelefone2()));
             tvEmail.setText(cliJur.getEmail());
             tvObs.setText(cliJur.getObs());
-        }else if(tipoCliente.equals("fisica")) {
-            ClientesFisica cliFis;
-            cliFis = cDB.consultarTotalFisica(clicado);
+
+        }else if(eJuridica.equals("FALSO")) {
+            Clientes cliFis;
+            cliFis = cDB.consultarTotal(clicado);
 
             tvIdCliente.setText(String.valueOf(cliFis.getCodigoCliente()));
             tvRazaoSocial.setText(cliFis.getRazaoSocial());
             tvFantasia.setText(cliFis.getFantasia());
-            tvCnpjCpf.setText(String.valueOf(cliFis.getCpf()));
-            tvInscrRg.setText(String.valueOf(cliFis.getRg()));
+            tvCnpjCpf.setText(String.valueOf(cliFis.getCnpjOuCpf()));
+            tvInscrRg.setText(String.valueOf(cliFis.getInscricaoOuRg()));
             tvCep.setText(String.valueOf(cliFis.getCep()));
             tvEndereco.setText(cliFis.getEndereco());
             tvNumero.setText(String.valueOf(cliFis.getNumero()));
             tvComplemento.setText(cliFis.getComplemento());
             tvBairro.setText(cliFis.getBairro());
             tvCidade.setText(cliFis.getCidade());
-            tvContato.setText(cliFis.getContato());
             tvAniver.setText(cliFis.getAniver());
             tvTelefone.setText(String.valueOf(cliFis.getTelefone()));
             tvTelefone2.setText(String.valueOf(cliFis.getTelefone2()));

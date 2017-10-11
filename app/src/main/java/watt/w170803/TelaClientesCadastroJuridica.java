@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.db.ClientesDB;
-import watt.w170803.util.clientes.ClientesJuridica;
 
 public class TelaClientesCadastroJuridica extends AppCompatActivity {
 
@@ -40,7 +40,7 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
     private Button btnClienteSalvar;
     private Button btnCancelar;
 
-    private ClientesJuridica c;
+    private Clientes c;
 
     // Banco
     private ClientesDB cliDB;
@@ -149,25 +149,25 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
 
             int codigoNovo = cliDB.getCodigoNovo();
 
-            c = new ClientesJuridica();
+            c = new Clientes();
             c.setCodigoCliente(codigoNovo);
-            c.setTipoCliente("juridica");
             c.setRazaoSocial(etRazaoSocial.getText().toString());
             c.setFantasia(etFantasia.getText().toString());
-            c.setCnpj(etCnpj.getText().toString());
-            c.setInscricaoEstadual(etInscricaoEstadual.getText().toString());
+            c.setCnpjOuCpf(etCnpj.getText().toString());
+            c.setInscricaoOuRg(etInscricaoEstadual.getText().toString());
             c.setCep(etCep.getText().toString());
             c.setEndereco(etEndereco.getText().toString());
             c.setNumero(etNumero.getText().toString());
             c.setComplemento(etComplemento.getText().toString());
             c.setBairro(etBairro.getText().toString());
             c.setCidade(etCidade.getText().toString());
-            c.setContato(etContato.getText().toString());
             c.setAniver(etAniver.getText().toString());
             c.setTelefone(etTelefone.getText().toString());
             c.setTelefone2(etTelefone2.getText().toString());
             c.setEmail(etEmail.getText().toString());
             c.setObs(etObs.getText().toString());
+            c.seteJuridica("VERDADEIRO");
+
 
             // Enviando para metodo cadastrar
             cliDB.inserir(c);
