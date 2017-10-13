@@ -62,7 +62,7 @@ public class TelaClientesCadastroJuridica extends AppCompatActivity {
         etComplemento = (EditText) findViewById(R.id.et_complemento);
         etBairro = (EditText) findViewById(R.id.et_bairro);
         etCidade = (EditText) findViewById(R.id.et_cidade);
-        etContato = (EditText) findViewById(R.id.et_contato);
+        etContato = (EditText) findViewById(R.id.et_contato_contatos);
         etAniver = (EditText) findViewById(R.id.et_aniver);
         btnSelecionaData = (Button) findViewById(R.id.btn_seleciona_data);
         etTelefone = (EditText) findViewById(R.id.et_telefone);

@@ -116,6 +116,10 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_CONTATOS_EMAIL,
     };
 
+    // SOMENTE A COLUNA ID PARA O METODO GETCODIGONOVO
+    public static final String[] TBL_CLIENTE_CONTATOS_SOMENTE_ID = {
+            BaseDB.CLIENTE_CONTATOS_ID};
+
     // DDL CRIAÇÃO DA TABELA
     public static final String CREATE_CLIENTE_CONTATOS =
             "create table "+TBL_CLIENTE_CONTATOS+"(" +
@@ -175,7 +179,7 @@ public class BaseDB extends SQLiteOpenHelper {
     // BANCO, NOME, VERSAO ###########################################################
 
     public static final String BANCO_NOME = "watt.sqlite";
-    public static final int BANCO_VERSAO = 16;
+    public static final int BANCO_VERSAO = 17;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);
@@ -185,12 +189,14 @@ public class BaseDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         /* Criando a tabela cliente */
         db.execSQL(CREATE_CLIENTE);
+        db.execSQL(CREATE_CLIENTE_CONTATOS);
         db.execSQL(CREATE_PRODUTOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_CLIENTES);
+        db.execSQL(DROP_CLIENTE_CONTATOS);
         db.execSQL(DROP_PRODUTOS);
         onCreate(db);
     }

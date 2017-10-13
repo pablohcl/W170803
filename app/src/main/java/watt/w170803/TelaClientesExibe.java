@@ -1,16 +1,25 @@
 package watt.w170803;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import watt.w170803.util.clientes.Clientes;
+import watt.w170803.util.clientes.contatos.ContatosAdapter;
+import watt.w170803.util.clientes.contatos.ContatosClientes;
+import watt.w170803.util.clientes.contatos.ContatosClientesDB;
 import watt.w170803.util.db.ClientesDB;
 
 public class TelaClientesExibe extends AppCompatActivity {
 
     private ClientesDB cDB;
+    private ContatosClientesDB contatosDB;
     private long clicado;
     private String eJuridica;
 
@@ -31,6 +40,10 @@ public class TelaClientesExibe extends AppCompatActivity {
     private TextView tvTelefone2;
     private TextView tvEmail;
     private TextView tvObs;
+
+    private RecyclerView rvContatosClientes;
+    private ContatosAdapter adapter;
+    private ArrayList<ContatosClientes> contatos;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -74,9 +87,12 @@ public class TelaClientesExibe extends AppCompatActivity {
         tvEmail = (TextView) findViewById(R.id.tv_email_clientes_exibe);
         tvObs = (TextView) findViewById(R.id.tv_obs_clientes_exibe);
 
+        rvContatosClientes = (RecyclerView) findViewById(R.id.rv_contatos_clientes);
+        contatos = new ArrayList<>();
+        contatosDB = new ContatosClientesDB(getContext());
+
         // ABRINDO O BANCO E CONSULTANDO OS DADOS DO CLIENTE SELECIONADO #####
         cDB = new ClientesDB(this);
-        cDB.abrirBanco();
         eJuridica = cDB.consultaTipoCliente(clicado);
 
         if(eJuridica.equals("VERDADEIRO")) {
@@ -123,8 +139,23 @@ public class TelaClientesExibe extends AppCompatActivity {
         }else{
             tvRazaoSocial.setText("Erro, cliente com o campo TIPO nulo.");
         }
+        mostrarTodos();
+    }
 
-        // FECHANDO O BANCO #####
-        cDB.fecharBanco();
+    private Context getContext(){
+        return this;
+    }
+
+    private void refreshList(){
+        adapter = new ContatosAdapter(TelaClientesExibe.this, contatos);
+        rvContatosClientes.setAdapter(adapter);
+        rvContatosClientes.setHasFixedSize(true);
+        rvContatosClientes.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void mostrarTodos(){
+
+        contatos = contatosDB.consultar();
+        refreshList();
     }
 }

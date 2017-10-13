@@ -30,7 +30,7 @@ public class ClientesDB {
         dbHelper.close();
     }
 
-    public long inserir(Clientes c){
+    public void inserir(Clientes c){
         ContentValues cv = new ContentValues();
 
         cv.put(BaseDB.CLIENTE_ID, c.getCodigoCliente());
@@ -51,14 +51,15 @@ public class ClientesDB {
         cv.put(BaseDB.CLIENTE_OBS, c.getObs());
         cv.put(BaseDB.CLIENTE_E_JURIDICA, c.geteJuridica());
 
-
-
-        return database.insert(BaseDB.TBL_CLIENTE, null, cv);
+        abrirBanco();
+        database.insert(BaseDB.TBL_CLIENTE, null, cv);
+        fecharBanco();
     }
 
     public ArrayList<Clientes> consultar(){
 
         ArrayList<Clientes> cliAux = new ArrayList<>();
+        abrirBanco();
 
         /* Consulta para trazer todos os dados de todas as
         *  colunas da tabela produto ordenados pelo nome */
@@ -84,11 +85,13 @@ public class ClientesDB {
         }
 
         cursor.close();
+        fecharBanco();
         return cliAux;
     }
 
     public ArrayList<Clientes> consultar(String[] campo, String busca){
         ArrayList<Clientes> resultado = new ArrayList<>();
+        abrirBanco();
 
         Cursor cursor = database.query(
                 BaseDB.TBL_CLIENTE,
@@ -111,12 +114,14 @@ public class ClientesDB {
             resultado.add(c);
         }
         cursor.close();
+        fecharBanco();
         return resultado;
     }
 
     public Clientes consultarTotal(long codigo){
 
         Clientes c = new Clientes();
+        abrirBanco();
 
         /* Consulta para trazer todos os dados de todas as
         *  colunas da tabela produto ordenados pelo nome */
@@ -152,11 +157,13 @@ public class ClientesDB {
         }
 
         cursor.close();
+        fecharBanco();
         return c;
     }
 
     public int getCodigoNovo(){
         int result;
+        abrirBanco();
         Cursor cursor = database.query(
                 BaseDB.TBL_CLIENTE,
                 BaseDB.TBL_CLIENTE_COLUNAS_SOMENTE_O_ID,
@@ -169,14 +176,18 @@ public class ClientesDB {
         cursor.moveToFirst();
         if(cursor.getCount()==0) {
             result = 0;
+            cursor.close();
         }else{
             result = cursor.getInt(0)+1;
+            cursor.close();
         }
+        fecharBanco();
         return result;
     }
 
     public String consultaTipoCliente(long codigo){
         String result;
+        abrirBanco();
         Cursor cursor = database.query(
                 BaseDB.TBL_CLIENTE,
                 BaseDB.TBL_CLIENTE_COLUNAS_CONSULTA_TIPO,
@@ -189,9 +200,12 @@ public class ClientesDB {
         cursor.moveToFirst();
         if(cursor.getCount()==1){
             result = cursor.getString(1);
+            cursor.close();
         }else{
             result = "ERRO NA CONSULTA SQL consultaTipoCliente()";
+            cursor.close();
         }
+        fecharBanco();
         return result;
     }
 }

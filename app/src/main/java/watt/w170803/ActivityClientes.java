@@ -170,18 +170,14 @@ public class ActivityClientes extends AppCompatActivity {
     // BUSCA TODOS OS CLIENTES CADASTRADOS
     private void mostrarTodos(){
 
-        cDAO.abrirBanco();
         clientes = cDAO.consultar();
         refreshList();
-        cDAO.fecharBanco();
     }
 
     // BUSCA OS CLIENTES DE ACORDO COM O DIGITADO
     private void buscarClientes(){
 
-        cDAO.abrirBanco();
         clientes = cDAO.consultar(campoBuscaSelecionado, etBuscaClientes.getText().toString());
         refreshList();
-        cDAO.fecharBanco();
     }
 }

@@ -271,6 +271,11 @@
                 android:textSize="24sp"
                 android:textColor="@color/black"
                 android:text="TextView" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_contatos_clientes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
