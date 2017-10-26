@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Usuario on 17/08/2017.
+ * Created by Pablo Henrique Correa on 17/08/2017.
  */
 
 public class BaseDB extends SQLiteOpenHelper {
@@ -66,7 +66,7 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_E_JURIDICA};
 
     //DDL - criação da(s) tabela(s)
-    public static final String CREATE_CLIENTE =
+    private static final String CREATE_CLIENTE =
             "create table "+TBL_CLIENTE+"(" +
                     CLIENTE_ID+" integer AUTO_INCREMENT primary key, "+
                     CLIENTE_RAZAO_SOCIAL+" text not null, "+
@@ -88,7 +88,7 @@ public class BaseDB extends SQLiteOpenHelper {
                     ");";
 
     //DDL - exclusão da(s) tabela(s)
-    public static final String DROP_CLIENTES =
+    private static final String DROP_CLIENTES =
             "drop table if exists " + TBL_CLIENTE;
 
 
@@ -121,7 +121,7 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_CONTATOS_ID};
 
     // DDL CRIAÇÃO DA TABELA
-    public static final String CREATE_CLIENTE_CONTATOS =
+    private static final String CREATE_CLIENTE_CONTATOS =
             "create table "+TBL_CLIENTE_CONTATOS+"(" +
                     CLIENTE_CONTATOS_ID+" integer AUTO_INCREMENT primary key, "+
                     CLIENTE_CONTATOS_CADASTRO+" text not null, "+
@@ -134,7 +134,7 @@ public class BaseDB extends SQLiteOpenHelper {
                     ");";
 
     // DDL EXCLUSÃO DA TABELA CLIENTE_CONTATOS
-    public static final String DROP_CLIENTE_CONTATOS =
+    private static final String DROP_CLIENTE_CONTATOS =
             "drop table if exists " + TBL_CLIENTE_CONTATOS;
 
 
@@ -161,7 +161,7 @@ public class BaseDB extends SQLiteOpenHelper {
     };
 
     //DDL - criação da(s) tabela(s)
-    public static final String CREATE_PRODUTOS =
+    protected static final String CREATE_PRODUTOS =
             "CREATE TABLE "+TBL_PRODUTOS+"(" +
                     PRODUTOS_ID+" integer AUTO_INCREMENT primary key, "+
                     PRODUTOS_DESCRICAO+" text not null, "+
@@ -172,14 +172,14 @@ public class BaseDB extends SQLiteOpenHelper {
                     ");";
 
     //DDL - exclusão da(s) tabela(s)
-    public static final String DROP_PRODUTOS =
+    protected static final String DROP_PRODUTOS =
             "drop table if exists " + TBL_PRODUTOS;
 
 
     // BANCO, NOME, VERSAO ###########################################################
 
-    public static final String BANCO_NOME = "watt.sqlite";
-    public static final int BANCO_VERSAO = 17;
+    private static final String BANCO_NOME = "watt.sqlite";
+    private static final int BANCO_VERSAO = 18;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);

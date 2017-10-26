@@ -155,7 +155,7 @@ public class TelaClientesExibe extends AppCompatActivity {
 
     private void mostrarTodos(){
 
-        contatos = contatosDB.consultar();
+        contatos = contatosDB.consultar(clicado);
         refreshList();
     }
 }

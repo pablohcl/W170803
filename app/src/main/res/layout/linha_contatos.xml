@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,10 +8,14 @@
         android:id="@+id/cd_contatos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,7 +29,8 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp" />
 
             <TextView
                 android:id="@+id/tv_ddd1_contatos_linha"
@@ -36,7 +40,8 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha"
+                android:layout_marginStart="8dp" />
 
             <TextView
                 android:id="@+id/tv_fone1_contatos_linha"
@@ -46,7 +51,8 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 app:layout_constraintLeft_toRightOf="@+id/tv_ddd1_contatos_linha"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha"
+                android:layout_marginStart="8dp" />
 
             <TextView
                 android:id="@+id/tv_ddd2_contatos_linha"
@@ -56,7 +62,8 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 app:layout_constraintLeft_toRightOf="@+id/tv_fone1_contatos_linha"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha"
+                android:layout_marginStart="24dp" />
 
             <TextView
                 android:id="@+id/tv_fone2_contatos_linha"
@@ -68,7 +75,10 @@
                 android:text="TextView"
                 app:layout_constraintLeft_toRightOf="@+id/tv_ddd2_contatos_linha"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_contato_contatos_linha"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintHorizontal_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_email_contatos_linha"
@@ -80,7 +90,8 @@
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_ddd1_contatos_linha" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_ddd1_contatos_linha"
+                android:layout_marginStart="8dp" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

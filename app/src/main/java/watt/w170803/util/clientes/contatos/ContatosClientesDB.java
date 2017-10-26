@@ -71,7 +71,7 @@ public class ContatosClientesDB {
         fecharBanco();
     }
 
-    public ArrayList<ContatosClientes> consultar(){
+    public ArrayList<ContatosClientes> consultar(long codigo){
 
         ArrayList<ContatosClientes> conAux = new ArrayList<>();
         abrirBanco();
@@ -81,7 +81,7 @@ public class ContatosClientesDB {
         Cursor cursor = database.query(
                 BaseDB.TBL_CLIENTE_CONTATOS,
                 BaseDB.TBL_CLIENTE_CONTATOS_COLUNAS,
-                null,
+                BaseDB.CLIENTE_CONTATOS_CADASTRO+" = '"+codigo+"'",
                 null,
                 null,
                 null,

@@ -2,8 +2,7 @@ package watt.w170803;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -17,12 +16,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
+import watt.w170803.util.DatePickerFragment;
 import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.contatos.ContatosClientes;
 import watt.w170803.util.clientes.contatos.ContatosClientesDB;
-import watt.w170803.util.db.BaseDB;
 import watt.w170803.util.db.ClientesDB;
 
 public class TelaClientesCadastroFisica extends AppCompatActivity {
@@ -37,7 +35,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private EditText etComplemento;
     private EditText etBairro;
     private EditText etCidade;
-    private static EditText etAniver;
+    private EditText etAniver;
     private Button btnSelecionaData;
     private EditText etTelefone;
     private EditText etTelefone2;
@@ -49,6 +47,13 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private Button btnCancelar;
 
     private Clientes c;
+
+    // Context
+    private Context esseContext;
+
+    // DATA DE ANIVER
+    public static String stringAniver;
+    public String teste;
 
     // ARRAY LIST RECEBEDORA DOS CONTATOS
     private ArrayList<ContatosClientes> listContatos;
@@ -62,7 +67,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private ContatosClientesDB contatosDB;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_clientes_cadastro_fisica);
 
@@ -90,6 +95,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         btnCancelar = (Button) findViewById(R.id.btn_cancelar);
         addContato = (ImageButton) findViewById(R.id.img_plus);
 
+        // Context
+        esseContext = TelaClientesCadastroFisica.this;
+
         // Instanciando o banco
         cliDB = new ClientesDB(this);
         contatosDB = new ContatosClientesDB(this);
@@ -104,10 +112,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         btnSelecionaData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getSupportFragmentManager(), "datePicker");
+                showDatePickerDialog();
             }
-        });//END DatePicker
+        });
 
         // ADICIONA CONTATOS
         addContato.setOnClickListener(new View.OnClickListener() {
@@ -135,14 +142,14 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
         //Toda vez que a Activity receber o foco, ativamos a conexão com o BD
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
         //Toda vez que a Activity perder o foco, encerramos a conexão com o BD
@@ -231,7 +238,17 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private void addContato(){
 
         contatosDB.abrirBanco();
-        codigoNovoContato = contatosDB.getCodigoNovoContatoCliente();
+
+        // PEGAR CODIGO NOVO
+        if(listContatos.isEmpty()) {
+            codigoNovoContato = contatosDB.getCodigoNovoContatoCliente();
+            Log.d("log", "LISTA DE CONTATOS VAZIA");
+        }else{
+            codigoNovoContato = contatosDB.getCodigoNovoContatoCliente() + listContatos.size();
+            //codigoNovoContato = codigoNovoContato + listContatos.size();
+            Log.d("log", "LISTA DE CONTATOS CHEIA");
+        }
+
         contatosDB.fecharBanco();
 
         AlertDialog.Builder alertContato = new AlertDialog.Builder(TelaClientesCadastroFisica.this);
@@ -275,35 +292,24 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
 
     public void salvarContatos(ArrayList<ContatosClientes> cc){
 
+        Log.d("log", "SALVANDO CONTATOS");
         if(cc.isEmpty()){
             Log.d("log", "ARRAYLIST DE CONTATOS VAZIA");
         }else{
-            for(int i=0; i<cc.size(); i++){
-                ContatosClientes c = cc.get(i);
-                contatosDB.inserir(c);
+            int i = 0;
+            while (i < cc.size()) {
+                Log.d("log", "DENTRO DO FOR VEZ " + i);
+                ContatosClientes contatosClientes = new ContatosClientes();
+                contatosClientes = cc.get(i);
+                contatosDB.inserir(contatosClientes);
+                i++;
             }
         }
+        Log.d("log", "FIM DE SALVANDO CONTATOS");
     }
 
-    // DatePicker
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            // Do something with the date chosen by the user
-            etAniver.setText(day+"/"+(month+1)+"/"+year);
-        }
-    }// END DatePicker
+    public void showDatePickerDialog() {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
 }

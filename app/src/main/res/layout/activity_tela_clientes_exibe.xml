@@ -272,6 +272,14 @@
                 android:textColor="@color/black"
                 android:text="TextView" />
 
+            <TextView
+                android:id="@+id/tv_contatos_tela_clientes_exibe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blueGrey500"
+                android:text="Contatos" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_contatos_clientes"
                 android:layout_width="match_parent"
