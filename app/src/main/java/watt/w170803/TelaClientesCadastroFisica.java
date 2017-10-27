@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 
 import watt.w170803.util.DatePickerFragment;
 import watt.w170803.util.clientes.Clientes;
+import watt.w170803.util.clientes.contatos.ContatosAdapter;
 import watt.w170803.util.clientes.contatos.ContatosClientes;
 import watt.w170803.util.clientes.contatos.ContatosClientesDB;
 import watt.w170803.util.db.ClientesDB;
@@ -58,6 +61,10 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private long codigoNovo;
     private long codigoNovoContato;
 
+    // RecyclerView para vizualizar os contatos adicionados
+    private RecyclerView rvContatos;
+    private ContatosAdapter adapter;
+
     // Banco
     private ClientesDB cliDB;
     private ContatosClientesDB contatosDB;
@@ -94,6 +101,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         btnClienteSalvar = (Button) findViewById(R.id.btn_clientes_fisica_salvar);
         btnCancelar = (Button) findViewById(R.id.btn_cancelar);
         addContato = (ImageButton) findViewById(R.id.img_plus);
+
+        // RecyclerView para vizualizar os contatos adicionados
+        rvContatos = (RecyclerView) findViewById(R.id.rv_contatos_tela_cadastro_cliente);
 
         // Instanciando o banco
         cliDB = new ClientesDB(this);
@@ -276,6 +286,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
                 con.setEmailContato(etEmailContato.getText().toString());
 
                 listContatos.add(con);
+                refreshListContatos();
             }
         });
         alertContato.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -308,5 +319,16 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     public void showDatePickerDialog() {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void refreshListContatos(){
+        adapter = new ContatosAdapter(getContext(), listContatos);
+        rvContatos.setAdapter(adapter);
+        rvContatos.setHasFixedSize(true);
+        rvContatos.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public Context getContext(){
+        return TelaClientesCadastroFisica.this;
     }
 }
