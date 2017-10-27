@@ -48,12 +48,8 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
 
     private Clientes c;
 
-    // Context
-    private Context esseContext;
-
-    // DATA DE ANIVER
-    public static String stringAniver;
-    public String teste;
+    // Tipo de cliente
+    private String tipoCliente;
 
     // ARRAY LIST RECEBEDORA DOS CONTATOS
     private ArrayList<ContatosClientes> listContatos;
@@ -70,6 +66,10 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_clientes_cadastro_fisica);
+
+        // Recebendo os parametros
+        Bundle args = getIntent().getExtras();
+        tipoCliente = args.getString("tipo cliente");
 
         //up navigation
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -94,9 +94,6 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         btnClienteSalvar = (Button) findViewById(R.id.btn_clientes_fisica_salvar);
         btnCancelar = (Button) findViewById(R.id.btn_cancelar);
         addContato = (ImageButton) findViewById(R.id.img_plus);
-
-        // Context
-        esseContext = TelaClientesCadastroFisica.this;
 
         // Instanciando o banco
         cliDB = new ClientesDB(this);
@@ -210,7 +207,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
             c.setTelefone2(etTelefone2.getText().toString());
             c.setEmail(etEmail.getText().toString());
             c.setObs(etObs.getText().toString());
-            c.seteJuridica("FALSO");
+            c.seteJuridica(tipoCliente);
 
 
             // Enviando para metodo cadastrar

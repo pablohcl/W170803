@@ -124,10 +124,16 @@ public class ActivityClientes extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(opcaoSelecionada==0){
+                            Bundle args = new Bundle();
+                            args.putString("tipo cliente", "FALSO");
                             Intent intent = new Intent(getContext(), TelaClientesCadastroFisica.class);
+                            intent.putExtras(args);
                             startActivity(intent);
                         }else{
-                            Intent intent = new Intent(getContext(), TelaClientesCadastroJuridica.class);
+                            Bundle args = new Bundle();
+                            args.putString("tipo cliente", "VERDADEIRO");
+                            Intent intent = new Intent(getContext(), TelaClientesCadastroFisica.class);
+                            intent.putExtras(args);
                             startActivity(intent);
                         }
                     }

@@ -33,11 +33,6 @@
             android:parentActivityName=".ActivityClientes"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TelaClientesCadastroJuridica"
-            android:label="Pessoa jurídica"
-            android:parentActivityName=".ActivityClientes"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".TelaClientesExibe"
             android:label="Dados do cliente"
             android:screenOrientation="portrait" />
