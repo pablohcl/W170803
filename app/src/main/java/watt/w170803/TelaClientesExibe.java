@@ -21,7 +21,6 @@ public class TelaClientesExibe extends AppCompatActivity {
     private ClientesDB cDB;
     private ContatosClientesDB contatosDB;
     private long clicado;
-    private String eJuridica;
 
     private TextView tvIdCliente;
     private TextView tvRazaoSocial;
@@ -34,9 +33,10 @@ public class TelaClientesExibe extends AppCompatActivity {
     private TextView tvComplemento;
     private TextView tvBairro;
     private TextView tvCidade;
-    private TextView tvContato;
     private TextView tvAniver;
+    private TextView tvDdd1;
     private TextView tvTelefone;
+    private TextView tvDdd2;
     private TextView tvTelefone2;
     private TextView tvEmail;
     private TextView tvObs;
@@ -80,9 +80,10 @@ public class TelaClientesExibe extends AppCompatActivity {
         tvComplemento = (TextView) findViewById(R.id.tv_complemento_clientes_exibe);
         tvBairro = (TextView) findViewById(R.id.tv_bairro_clientes_exibe);
         tvCidade = (TextView) findViewById(R.id.tv_cidade_clientes_exibe);
-        tvContato = (TextView) findViewById(R.id.tv_contato_clientes_exibe);
         tvAniver = (TextView) findViewById(R.id.tv_aniver_clientes_exibe);
+        tvDdd1 = (TextView) findViewById(R.id.tv_ddd1_tela_exibe);
         tvTelefone = (TextView) findViewById(R.id.tv_telefone_clientes_exibe);
+        tvDdd2 = (TextView) findViewById(R.id.tv_ddd2_tela_exibe);
         tvTelefone2 = (TextView) findViewById(R.id.tv_telefone2_clientes_exibe);
         tvEmail = (TextView) findViewById(R.id.tv_email_clientes_exibe);
         tvObs = (TextView) findViewById(R.id.tv_obs_clientes_exibe);
@@ -93,52 +94,29 @@ public class TelaClientesExibe extends AppCompatActivity {
 
         // ABRINDO O BANCO E CONSULTANDO OS DADOS DO CLIENTE SELECIONADO #####
         cDB = new ClientesDB(this);
-        eJuridica = cDB.consultaTipoCliente(clicado);
 
-        if(eJuridica.equals("VERDADEIRO")) {
-            Clientes cliJur;
-            cliJur = cDB.consultarTotal(clicado);
+        Clientes cliJur;
+        cliJur = cDB.consultarTotal(clicado);
 
-            tvIdCliente.setText(String.valueOf(cliJur.getCodigoCliente()));
-            tvRazaoSocial.setText(cliJur.getRazaoSocial());
-            tvFantasia.setText(cliJur.getFantasia());
-            tvCnpjCpf.setText(String.valueOf(cliJur.getCnpjOuCpf()));
-            tvInscrRg.setText(String.valueOf(cliJur.getInscricaoOuRg()));
-            tvCep.setText(String.valueOf(cliJur.getCep()));
-            tvEndereco.setText(cliJur.getEndereco());
-            tvNumero.setText(String.valueOf(cliJur.getNumero()));
-            tvComplemento.setText(cliJur.getComplemento());
-            tvBairro.setText(cliJur.getBairro());
-            tvCidade.setText(cliJur.getCidade());
-            tvAniver.setText(cliJur.getAniver());
-            tvTelefone.setText(String.valueOf(cliJur.getTelefone()));
-            tvTelefone2.setText(String.valueOf(cliJur.getTelefone2()));
-            tvEmail.setText(cliJur.getEmail());
-            tvObs.setText(cliJur.getObs());
+        tvIdCliente.setText(String.valueOf(cliJur.getCodigoCliente()));
+        tvRazaoSocial.setText(cliJur.getRazaoSocial());
+        tvFantasia.setText(cliJur.getFantasia());
+        tvCnpjCpf.setText(String.valueOf(cliJur.getCnpjOuCpf()));
+        tvInscrRg.setText(String.valueOf(cliJur.getInscricaoOuRg()));
+        tvCep.setText(String.valueOf(cliJur.getCep()));
+        tvEndereco.setText(cliJur.getEndereco());
+        tvNumero.setText(String.valueOf(cliJur.getNumero()));
+        tvComplemento.setText(cliJur.getComplemento());
+        tvBairro.setText(cliJur.getBairro());
+        tvCidade.setText(cliJur.getCidade());
+        tvAniver.setText(cliJur.getAniver());
+        tvDdd1.setText(cliJur.getDdd1());
+        tvTelefone.setText(String.valueOf(cliJur.getTelefone()));
+        tvDdd2.setText(cliJur.getDdd2());
+        tvTelefone2.setText(String.valueOf(cliJur.getTelefone2()));
+        tvEmail.setText(cliJur.getEmail());
+        tvObs.setText(cliJur.getObs());
 
-        }else if(eJuridica.equals("FALSO")) {
-            Clientes cliFis;
-            cliFis = cDB.consultarTotal(clicado);
-
-            tvIdCliente.setText(String.valueOf(cliFis.getCodigoCliente()));
-            tvRazaoSocial.setText(cliFis.getRazaoSocial());
-            tvFantasia.setText(cliFis.getFantasia());
-            tvCnpjCpf.setText(String.valueOf(cliFis.getCnpjOuCpf()));
-            tvInscrRg.setText(String.valueOf(cliFis.getInscricaoOuRg()));
-            tvCep.setText(String.valueOf(cliFis.getCep()));
-            tvEndereco.setText(cliFis.getEndereco());
-            tvNumero.setText(String.valueOf(cliFis.getNumero()));
-            tvComplemento.setText(cliFis.getComplemento());
-            tvBairro.setText(cliFis.getBairro());
-            tvCidade.setText(cliFis.getCidade());
-            tvAniver.setText(cliFis.getAniver());
-            tvTelefone.setText(String.valueOf(cliFis.getTelefone()));
-            tvTelefone2.setText(String.valueOf(cliFis.getTelefone2()));
-            tvEmail.setText(cliFis.getEmail());
-            tvObs.setText(cliFis.getObs());
-        }else{
-            tvRazaoSocial.setText("Erro, cliente com o campo TIPO nulo.");
-        }
         mostrarTodos();
     }
 

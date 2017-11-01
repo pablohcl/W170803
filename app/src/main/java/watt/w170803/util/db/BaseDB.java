@@ -24,7 +24,9 @@ public class BaseDB extends SQLiteOpenHelper {
     public static final String CLIENTE_BAIRRO = "bairro";
     public static final String CLIENTE_CIDADE = "cidade";
     public static final String CLIENTE_ANIVER = "aniver";
+    public static final String CLIENTE_DDD1 = "ddd1";
     public static final String CLIENTE_TELEFONE = "telefone";
+    public static final String CLIENTE_DDD2 = "ddd2";
     public static final String CLIENTE_TELEFONE2 = "telefone2";
     public static final String CLIENTE_EMAIL = "email";
     public static final String CLIENTE_OBS = "obs";
@@ -44,7 +46,9 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_BAIRRO,
             BaseDB.CLIENTE_CIDADE,
             BaseDB.CLIENTE_ANIVER,
+            BaseDB.CLIENTE_DDD1,
             BaseDB.CLIENTE_TELEFONE,
+            BaseDB.CLIENTE_DDD2,
             BaseDB.CLIENTE_TELEFONE2,
             BaseDB.CLIENTE_EMAIL,
             BaseDB.CLIENTE_OBS,
@@ -80,7 +84,9 @@ public class BaseDB extends SQLiteOpenHelper {
                     CLIENTE_BAIRRO+" text,"+
                     CLIENTE_CIDADE+" text,"+
                     CLIENTE_ANIVER+" text, "+
+                    CLIENTE_DDD1+" text, "+
                     CLIENTE_TELEFONE+" text,"+
+                    CLIENTE_DDD2+" text, "+
                     CLIENTE_TELEFONE2+" text,"+
                     CLIENTE_EMAIL+" text,"+
                     CLIENTE_OBS+" text,"+
@@ -179,7 +185,7 @@ public class BaseDB extends SQLiteOpenHelper {
     // BANCO, NOME, VERSAO ###########################################################
 
     private static final String BANCO_NOME = "watt.sqlite";
-    private static final int BANCO_VERSAO = 18;
+    private static final int BANCO_VERSAO = 19;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);

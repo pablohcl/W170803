@@ -190,21 +190,6 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tv_contato_label_clientes_exibe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/blueGrey500"
-                android:text="Contato" />
-
-            <TextView
-                android:id="@+id/tv_contato_clientes_exibe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <TextView
                 android:id="@+id/tv_aniver_label_clientes_exibe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -227,19 +212,51 @@
                 android:textColor="@color/blueGrey500"
                 android:text="Telefones" />
 
-            <TextView
-                android:id="@+id/tv_telefone_clientes_exibe"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_telefone2_clientes_exibe"
+                <TextView
+                    android:id="@+id/tv_ddd1_tela_exibe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/tv_telefone_clientes_exibe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_ddd2_tela_exibe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/tv_telefone2_clientes_exibe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_email_label_clientes_exibe"

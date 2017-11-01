@@ -1,7 +1,6 @@
 package watt.w170803;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
@@ -12,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -40,7 +38,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     private EditText etCidade;
     private EditText etAniver;
     private Button btnSelecionaData;
+    private EditText etDdd1;
     private EditText etTelefone;
+    private EditText etDdd2;
     private EditText etTelefone2;
     private EditText etEmail;
     private EditText etObs;
@@ -94,7 +94,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         etCidade = (EditText) findViewById(R.id.et_cidade);
         etAniver = (EditText) findViewById(R.id.et_aniver);
         btnSelecionaData = (Button) findViewById(R.id.btn_seleciona_data);
+        etDdd1 = (EditText) findViewById(R.id.tv_ddd1_tela_exibe);
         etTelefone = (EditText) findViewById(R.id.et_telefone);
+        etDdd2 = (EditText) findViewById(R.id.ddd2);
         etTelefone2 = (EditText) findViewById(R.id.et_telefone2);
         etEmail = (EditText) findViewById(R.id.et_email);
         etObs = (EditText) findViewById(R.id.et_obs);
@@ -174,7 +176,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
         etBairro.setText(null);
         etCidade.setText(null);
         etAniver.setText(null);
+        etDdd1.setText(null);
         etTelefone.setText(null);
+        etDdd2.setText(null);
         etTelefone2.setText(null);
         etEmail.setText(null);
         etObs.setText(null);
@@ -191,7 +195,7 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
     // ORGANIZA E INSERE OS DADOS NO BANCO #####
     public void salvarNoBanco(){
 
-        if(etRazaoSocial.getText().toString().isEmpty() ||  etFantasia.getText().toString().isEmpty() || etCpf.getText().toString().isEmpty() || etEndereco.getText().toString().isEmpty() || etBairro.getText().toString().isEmpty() || etCidade.getText().toString().isEmpty() || etTelefone.getText().toString().isEmpty()) {
+        if(etRazaoSocial.getText().toString().isEmpty() || etDdd1.getText().toString().isEmpty() ||  etFantasia.getText().toString().isEmpty() || etCpf.getText().toString().isEmpty() || etEndereco.getText().toString().isEmpty() || etBairro.getText().toString().isEmpty() || etCidade.getText().toString().isEmpty() || etTelefone.getText().toString().isEmpty()) {
 
             Toast.makeText(TelaClientesCadastroFisica.this, "Preencha todos os campos em vermelho.", Toast.LENGTH_LONG).show();
 
@@ -213,7 +217,9 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
             c.setBairro(etBairro.getText().toString());
             c.setCidade(etCidade.getText().toString());
             c.setAniver(etAniver.getText().toString());
+            c.setDdd1(etDdd1.getText().toString());
             c.setTelefone(etTelefone.getText().toString());
+            c.setDdd2(etDdd2.getText().toString());
             c.setTelefone2(etTelefone2.getText().toString());
             c.setEmail(etEmail.getText().toString());
             c.setObs(etObs.getText().toString());
@@ -274,19 +280,33 @@ public class TelaClientesCadastroFisica extends AppCompatActivity {
                 EditText etFone2Contato = (EditText) v.findViewById(R.id.et_fone2_contato);
                 EditText etEmailContato = (EditText) v.findViewById(R.id.et_email_contatos);
 
-                ContatosClientes con = new ContatosClientes();
+                if(etContatoContatos.getText().toString().isEmpty()){
+                    AlertDialog.Builder alertContatoVazio = new AlertDialog.Builder(getContext());
+                    alertContatoVazio.setTitle("Atenção");
+                    alertContatoVazio.setMessage("Contato não será salvo pois não foi informado o nome");
+                    alertContatoVazio.setPositiveButton("FECHAR", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                con.setIdContato(codigoNovoContato);
-                con.setCadastro(codigoNovo);
-                con.setContatoContatos(etContatoContatos.getText().toString());
-                con.setDdd1Contato(etDdd1Contato.getText().toString());
-                con.setFone1Contato(etFone1Contato.getText().toString());
-                con.setDdd2Contato(etDdd2Contato.getText().toString());
-                con.setFone2Contato(etFone2Contato.getText().toString());
-                con.setEmailContato(etEmailContato.getText().toString());
+                        }
+                    });
+                    alertContatoVazio.show();
+                }else {
 
-                listContatos.add(con);
-                refreshListContatos();
+                    ContatosClientes con = new ContatosClientes();
+
+                    con.setIdContato(codigoNovoContato);
+                    con.setCadastro(codigoNovo);
+                    con.setContatoContatos(etContatoContatos.getText().toString());
+                    con.setDdd1Contato(etDdd1Contato.getText().toString());
+                    con.setFone1Contato(etFone1Contato.getText().toString());
+                    con.setDdd2Contato(etDdd2Contato.getText().toString());
+                    con.setFone2Contato(etFone2Contato.getText().toString());
+                    con.setEmailContato(etEmailContato.getText().toString());
+
+                    listContatos.add(con);
+                    refreshListContatos();
+                }
             }
         });
         alertContato.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

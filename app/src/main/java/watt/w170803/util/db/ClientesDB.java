@@ -45,7 +45,9 @@ public class ClientesDB {
         cv.put(BaseDB.CLIENTE_BAIRRO, c.getBairro());
         cv.put(BaseDB.CLIENTE_CIDADE, c.getCidade());
         cv.put(BaseDB.CLIENTE_ANIVER, c.getAniver());
+        cv.put(BaseDB.CLIENTE_DDD1, c.getDdd1());
         cv.put(BaseDB.CLIENTE_TELEFONE, c.getTelefone());
+        cv.put(BaseDB.CLIENTE_DDD2, c.getDdd2());
         cv.put(BaseDB.CLIENTE_TELEFONE2, c.getTelefone2());
         cv.put(BaseDB.CLIENTE_EMAIL, c.getEmail());
         cv.put(BaseDB.CLIENTE_OBS, c.getObs());
@@ -148,11 +150,13 @@ public class ClientesDB {
             c.setBairro(cursor.getString(9));
             c.setCidade(cursor.getString(10));
             c.setAniver(cursor.getString(11));
-            c.setTelefone(cursor.getString(12));
-            c.setTelefone2(cursor.getString(13));
-            c.setEmail(cursor.getString(14));
-            c.setObs(cursor.getString(15));
-            c.seteJuridica(cursor.getString(16));
+            c.setDdd1(cursor.getString(12));
+            c.setTelefone(cursor.getString(13));
+            c.setDdd2(cursor.getString(14));
+            c.setTelefone2(cursor.getString(15));
+            c.setEmail(cursor.getString(16));
+            c.setObs(cursor.getString(17));
+            c.seteJuridica(cursor.getString(18));
 
         }
 
