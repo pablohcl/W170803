@@ -70,7 +70,7 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_E_JURIDICA};
 
     //DDL - criação da(s) tabela(s)
-    private static final String CREATE_CLIENTE =
+    protected static final String CREATE_CLIENTE =
             "create table "+TBL_CLIENTE+"(" +
                     CLIENTE_ID+" integer AUTO_INCREMENT primary key, "+
                     CLIENTE_RAZAO_SOCIAL+" text not null, "+
@@ -94,7 +94,7 @@ public class BaseDB extends SQLiteOpenHelper {
                     ");";
 
     //DDL - exclusão da(s) tabela(s)
-    private static final String DROP_CLIENTES =
+    protected static final String DROP_CLIENTES =
             "drop table if exists " + TBL_CLIENTE;
 
 
@@ -172,9 +172,9 @@ public class BaseDB extends SQLiteOpenHelper {
                     PRODUTOS_ID+" integer AUTO_INCREMENT primary key, "+
                     PRODUTOS_DESCRICAO+" text not null, "+
                     PRODUTOS_UND_MEDIDA+" text not null, "+
-                    PRODUTOS_PRECO+" double not null, "+
-                    PRODUTOS_PRECO_MIN+" double, "+
-                    PRODUTOS_PRECO_SUGERIDO+" double"+
+                    PRODUTOS_PRECO+" REAL not null, "+
+                    PRODUTOS_PRECO_MIN+" REAL, "+
+                    PRODUTOS_PRECO_SUGERIDO+" REAL"+
                     ");";
 
     //DDL - exclusão da(s) tabela(s)
@@ -185,7 +185,7 @@ public class BaseDB extends SQLiteOpenHelper {
     // BANCO, NOME, VERSAO ###########################################################
 
     private static final String BANCO_NOME = "watt.sqlite";
-    private static final int BANCO_VERSAO = 19;
+    private static final int BANCO_VERSAO = 24;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);

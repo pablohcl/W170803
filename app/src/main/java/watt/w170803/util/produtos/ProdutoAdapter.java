@@ -2,6 +2,7 @@ package watt.w170803.util.produtos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import watt.w170803.R;
 import watt.w170803.TelaProdutosExibe;
@@ -43,8 +45,9 @@ public class ProdutoAdapter extends RecyclerView.Adapter {
         hold.tvIdProduto.setText(String.valueOf(pro.getIdProduto()));
         hold.tvDescricao.setText(String.valueOf(pro.getDescricao()));
         hold.tvUndMedida.setText(String.valueOf(pro.getUndMedida()));
-        hold.tvPreco.setText(String.valueOf(pro.getPreco()));
-        hold.tvPrecoSugerido.setText(String.valueOf(pro.getPrecoSugerido()));
+        //hold.tvPreco.setText(String.valueOf(pro.getPreco()));
+        hold.tvPreco.setText(String.format(Locale.getDefault(),"%.2f", pro.getPreco()));
+        hold.tvPrecoSugerido.setText(String.format(Locale.getDefault(), "%.2f", pro.getPrecoSugerido()));
         holder.itemView.setTag(pro.getIdProduto());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

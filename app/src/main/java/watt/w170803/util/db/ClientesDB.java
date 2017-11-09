@@ -26,6 +26,11 @@ public class ClientesDB {
         database = dbHelper.getWritableDatabase();
     }
 
+    public void recriarTblClientes(){
+        database.execSQL(BaseDB.DROP_CLIENTES);
+        database.execSQL(BaseDB.CREATE_CLIENTE);
+    }
+
     public void fecharBanco(){
         dbHelper.close();
     }
@@ -212,5 +217,6 @@ public class ClientesDB {
         fecharBanco();
         return result;
     }
+
 }
 

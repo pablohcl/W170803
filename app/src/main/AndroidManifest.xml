@@ -40,9 +40,18 @@
             android:name=".ActivityPedidos"
             android:label="Pedidos"
             android:screenOrientation="portrait" />
-        <activity android:name=".ActivityProdutos" />
-        <activity android:name=".TelaProdutosExibe" />
-        <activity android:name=".Atualizador"></activity>
+        <activity android:name=".ActivityProdutos"
+            android:label="Produtos"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".TelaProdutosExibe"
+            android:label="Cadastro do produto"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Atualizador"
+            android:parentActivityName=".MainActivity"
+            android:label="Atualizar"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

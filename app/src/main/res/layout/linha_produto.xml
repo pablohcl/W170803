@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -59,26 +60,44 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_id_produto" />
 
             <TextView
-                android:id="@+id/tv_preco"
+                android:id="@+id/cifrao_preco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="R$"
+                app:layout_constraintLeft_toRightOf="@+id/tv_und_medida"
+                app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
+
+            <TextView
+                android:id="@+id/tv_preco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
-                app:layout_constraintLeft_toRightOf="@+id/tv_und_medida"
+                app:layout_constraintTop_toBottomOf="@+id/tv_descricao"
+                app:layout_constraintLeft_toRightOf="@+id/cifrao_preco"
+                android:layout_marginLeft="4dp" />
+
+            <TextView
+                android:id="@+id/cifrao_preco_sugerido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:text="R$"
+                app:layout_constraintLeft_toRightOf="@+id/tv_preco"
                 app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
 
             <TextView
                 android:id="@+id/tv_preco_sugerido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
-                app:layout_constraintLeft_toRightOf="@+id/tv_preco"
-                app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_descricao"
+                app:layout_constraintLeft_toRightOf="@+id/cifrao_preco_sugerido"
+                android:layout_marginLeft="4dp" />
 
         </android.support.constraint.ConstraintLayout>
 
