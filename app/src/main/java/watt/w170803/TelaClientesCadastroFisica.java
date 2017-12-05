@@ -22,7 +22,7 @@ import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.contatos.ContatosAdapter;
 import watt.w170803.util.clientes.contatos.ContatosClientes;
 import watt.w170803.util.clientes.contatos.ContatosClientesDB;
-import watt.w170803.util.db.ClientesDB;
+import watt.w170803.util.clientes.ClientesDB;
 
 public class TelaClientesCadastroFisica extends AppCompatActivity {
 

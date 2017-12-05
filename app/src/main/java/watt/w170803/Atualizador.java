@@ -21,9 +21,9 @@ import java.io.InputStreamReader;
 
 import cz.msebera.android.httpclient.Header;
 import watt.w170803.util.clientes.Clientes;
-import watt.w170803.util.db.ClientesDB;
+import watt.w170803.util.clientes.ClientesDB;
 import watt.w170803.util.produtos.Produto;
-import watt.w170803.util.db.ProdutoDB;
+import watt.w170803.util.produtos.ProdutoDB;
 
 public class Atualizador extends AppCompatActivity {
 
@@ -115,6 +115,7 @@ public class Atualizador extends AppCompatActivity {
                 FileInputStream is = new FileInputStream(file);
                 InputStreamReader isReader = new InputStreamReader(is, "windows-1250");
                 BufferedReader reader=new BufferedReader(isReader);
+
                 String linha;
                 String idProduto, descricao, undMedida, preco, precoMin, precoSugerido;
 

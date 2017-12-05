@@ -6,4 +6,165 @@
     android:layout_height="match_parent"
     tools:context="watt.w170803.TelaProdutosExibe">
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp">
+
+        <TextView
+            android:id="@+id/tv_id_label_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Codigo"
+            android:textColor="@color/blueGrey500"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_id_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_desc_label_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:textColor="@color/blueGrey500"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_desc_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_und_medida_label_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unidade de medida"
+            android:textColor="@color/blueGrey500"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_und_medida_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_preco_label_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preço"
+            android:textColor="@color/blueGrey500"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_preco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cifrao_preco_tela_produtos_exibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="R$"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_preco_tela_produtos_exibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_preco_min_label_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preço mínimo"
+            android:textColor="@color/blueGrey500"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_preco_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cifrao_preco_minimo_produtos_exibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:text="R$" />
+
+            <TextView
+                android:id="@+id/tv_preco_min_tela_produtos_exibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_preco_sugerido_label_tela_produtos_exibe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preço sugerido"
+            android:textColor="@color/blueGrey500"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_preco_sugerido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cifrao_preco_sugerido_produtos_exibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:text="R$" />
+
+            <TextView
+                android:id="@+id/tv_preco_sugerido_tela_produtos_exibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

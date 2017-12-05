@@ -1,4 +1,4 @@
-package watt.w170803.util.db;
+package watt.w170803.util.clientes;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import watt.w170803.util.clientes.Clientes;
+import watt.w170803.util.db.BaseDB;
 
 /**
  * Created by Usuario on 17/08/2017.

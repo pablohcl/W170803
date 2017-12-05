@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import watt.w170803.util.db.BaseDB;
 import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.ClientesAdapter;
-import watt.w170803.util.db.ClientesDB;
+import watt.w170803.util.clientes.ClientesDB;
 
 public class ActivityClientes extends AppCompatActivity {
 

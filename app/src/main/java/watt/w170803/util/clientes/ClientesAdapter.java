@@ -1,19 +1,23 @@
 package watt.w170803.util.clientes;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import watt.w170803.R;
 import watt.w170803.TelaClientesExibe;
 import watt.w170803.util.clientes.Clientes;
+import watt.w170803.util.pedidos.NovoPedido;
 
 /**
  * Created by Usuario on 31/08/2017.
@@ -49,12 +53,25 @@ public class ClientesAdapter extends RecyclerView.Adapter {
         holder.itemView.setTag(cli.getCodigoCliente());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, TelaClientesExibe.class);
-                Bundle args = new Bundle();
-                args.putLong("clicado",(Long)view.getTag());
-                intent.putExtras(args);
-                context.startActivity(intent);
+            public void onClick(final View view) {
+                AlertDialog.Builder adOpcoesCliente = new AlertDialog.Builder(context);
+                adOpcoesCliente.setTitle("O que desejas?");
+                adOpcoesCliente.setItems(R.array.array_alert_opcoes_cliente, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch(i){
+                            case 0:
+                                exibirDadosCliente(view);
+                                break;
+
+                            case 1:
+                                novoPedido(view);
+                                break;
+                        }
+                    }
+                });
+                adOpcoesCliente.show();
+
             }
         });
     }
@@ -62,6 +79,24 @@ public class ClientesAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return clientes.size();
+    }
+
+    private void exibirDadosCliente(View view){
+
+        Intent intent = new Intent(context, TelaClientesExibe.class);
+        Bundle args = new Bundle();
+        args.putLong("clicado",(Long)view.getTag());
+        intent.putExtras(args);
+        context.startActivity(intent);
+    }
+
+    private void novoPedido(View view){
+        Intent intent = new Intent(context, NovoPedido.class);
+        Bundle args = new Bundle();
+        args.putLong("cliente selecionado", (Long)view.getTag());
+        args.putLong("pedido", 0);
+        intent.putExtras(args);
+        context.startActivity(intent);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -17,6 +17,9 @@ import android.widget.Button;
 
 import java.io.InputStream;
 
+import watt.w170803.util.pedidos.NovoPedido;
+import watt.w170803.util.pedidos.PedidosDB;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,8 +56,14 @@ public class MainActivity extends AppCompatActivity
         btnPedidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ActivityPedidos.class);
-                startActivity(intent);
+                PedidosDB pedDB = new PedidosDB(getContext());
+                if(pedDB.getPedidoAberto() == null) {
+                    Intent intent = new Intent(getContext(), ActivityClientes.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getContext(), NovoPedido.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -62,6 +71,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ActivityProdutos.class);
+                Bundle args = new Bundle();
+                args.putLong("id pedido", 0);
+                intent.putExtras(args);
                 startActivity(intent);
             }
         });

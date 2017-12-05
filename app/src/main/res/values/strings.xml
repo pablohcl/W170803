@@ -24,4 +24,8 @@
     <string name="alert_campo_razao">Razão social / Fantasia</string>
     <string name="alert_campo_cnpj">CNPJ / CPF</string>
     <string name="alert_campo_endereco">Endereço / Cidade</string>
+
+    <!-- Alert opções cliente -->
+    <string name="alert_opcoes_cliente_consultar">Consultar Cadastro</string>
+    <string name="alert_opcoes_cliente_novo_pedido">Novo Pedido</string>
 </resources>

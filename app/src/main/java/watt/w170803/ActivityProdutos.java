@@ -5,19 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
-import com.loopj.android.http.*;
-import cz.msebera.android.httpclient.Header;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import watt.w170803.util.produtos.Produto;
 import watt.w170803.util.produtos.ProdutoAdapter;
-import watt.w170803.util.db.ProdutoDB;
+import watt.w170803.util.produtos.ProdutoDB;
 
 public class ActivityProdutos extends AppCompatActivity {
 
@@ -27,10 +20,17 @@ public class ActivityProdutos extends AppCompatActivity {
     private ProdutoDB produtoDB;
     private ProdutoAdapter adapter;
 
+    // ARGS VINDOS COM A INTENT
+    private long idPedido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produtos);
+
+        // ARGS VINDOS COM A INTENT
+        Bundle args = getIntent().getExtras();
+        idPedido = args.getLong("id pedido");
 
         // REFERÊNCIAS @@@@@
         rvProdutos = (RecyclerView) findViewById(R.id.rv_produtos);

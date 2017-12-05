@@ -1,4 +1,4 @@
-package watt.w170803.util.db;
+package watt.w170803.util.produtos;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -79,5 +79,37 @@ public class ProdutoDB {
 
         cursor.close();
         return proAux;
+    }
+
+    public Produto consultarTotal(long codigo){
+
+        Produto p = new Produto();
+        abrirBanco();
+
+        /* Consulta para trazer todos os dados de todas as
+        *  colunas da tabela produto ordenados pelo nome */
+        Cursor cursor = database.query(
+                BaseDB.TBL_PRODUTOS,
+                BaseDB.TBL_PRODUTOS_COLUNAS,
+                BaseDB.PRODUTOS_ID+" = '"+codigo+"'",
+                null,
+                null,
+                null,
+                null); //order by
+
+        cursor.moveToFirst();
+        if(cursor.getCount() == 1){
+            p.setIdProduto(cursor.getInt(0));
+            p.setDescricao(cursor.getString(1));
+            p.setUndMedida(cursor.getString(2));
+            p.setPreco(cursor.getDouble(3));
+            p.setPrecoMin(cursor.getDouble(4));
+            p.setPrecoSugerido(cursor.getDouble(5));
+
+        }
+
+        cursor.close();
+        fecharBanco();
+        return p;
     }
 }

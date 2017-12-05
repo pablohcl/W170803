@@ -70,7 +70,7 @@ public class BaseDB extends SQLiteOpenHelper {
             BaseDB.CLIENTE_E_JURIDICA};
 
     //DDL - criação da(s) tabela(s)
-    protected static final String CREATE_CLIENTE =
+    public static final String CREATE_CLIENTE =
             "create table "+TBL_CLIENTE+"(" +
                     CLIENTE_ID+" integer AUTO_INCREMENT primary key, "+
                     CLIENTE_RAZAO_SOCIAL+" text not null, "+
@@ -94,7 +94,7 @@ public class BaseDB extends SQLiteOpenHelper {
                     ");";
 
     //DDL - exclusão da(s) tabela(s)
-    protected static final String DROP_CLIENTES =
+    public static final String DROP_CLIENTES =
             "drop table if exists " + TBL_CLIENTE;
 
 
@@ -167,7 +167,7 @@ public class BaseDB extends SQLiteOpenHelper {
     };
 
     //DDL - criação da(s) tabela(s)
-    protected static final String CREATE_PRODUTOS =
+    public static final String CREATE_PRODUTOS =
             "CREATE TABLE "+TBL_PRODUTOS+"(" +
                     PRODUTOS_ID+" integer AUTO_INCREMENT primary key, "+
                     PRODUTOS_DESCRICAO+" text not null, "+
@@ -178,14 +178,60 @@ public class BaseDB extends SQLiteOpenHelper {
                     ");";
 
     //DDL - exclusão da(s) tabela(s)
-    protected static final String DROP_PRODUTOS =
+    public static final String DROP_PRODUTOS =
             "drop table if exists " + TBL_PRODUTOS;
+
+
+
+
+    // TABELA PEDIDOS ####################
+    public static final String TBL_PEDIDO = "pedido";
+    public static final String PEDIDO_FINALIZADO = "finalizado";
+    public static final String PEDIDO_ID = "id_pedido";
+    public static final String PEDIDO_CLIENTE = "cliente_do_pedido";
+    public static final String PEDIDO_COND_PGTO = "cond_pgto";
+    public static final String PEDIDO_OBS = "obs_pedido";
+    public static final String PEDIDO_TOTAL = "total";
+
+    /* Colunas da Tabela PEDIDO. São públicos para qualquer classe. */
+    public static final String[] TBL_PEDIDO_COLUNAS = {
+            BaseDB.PEDIDO_FINALIZADO,
+            BaseDB.PEDIDO_ID,
+            BaseDB.PEDIDO_CLIENTE,
+            BaseDB.PEDIDO_COND_PGTO,
+            BaseDB.PEDIDO_OBS,
+            BaseDB.PEDIDO_TOTAL
+    };
+
+    public static final String[] TBL_PEDIDO_COLUNAS_SOMENTE_ID = {
+            BaseDB.PEDIDO_ID
+            };
+
+    //DDL - criação da(s) tabela(s)
+    protected static final String CREATE_PEDIDO =
+            "create table "+TBL_PEDIDO+"(" +
+                    PEDIDO_FINALIZADO+" NUMERIC NOT NULL, "+
+                    PEDIDO_ID+" integer AUTO_INCREMENT primary key, "+
+                    PEDIDO_CLIENTE+" text not null, "+
+                    PEDIDO_COND_PGTO+" text not null, "+
+                    PEDIDO_OBS+" text, "+
+                    PEDIDO_TOTAL+" REAL "+
+                    ");";
+
+    //DDL - exclusão da(s) tabela(s)
+    protected static final String DROP_PEDIDO =
+            "drop table if exists " + TBL_PEDIDO;
+
+
+
+
+
 
 
     // BANCO, NOME, VERSAO ###########################################################
 
     private static final String BANCO_NOME = "watt.sqlite";
-    private static final int BANCO_VERSAO = 24;
+    private static final int BANCO_VERSAO = 25;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);
@@ -197,6 +243,7 @@ public class BaseDB extends SQLiteOpenHelper {
         db.execSQL(CREATE_CLIENTE);
         db.execSQL(CREATE_CLIENTE_CONTATOS);
         db.execSQL(CREATE_PRODUTOS);
+        db.execSQL(CREATE_PEDIDO);
     }
 
     @Override
@@ -204,6 +251,7 @@ public class BaseDB extends SQLiteOpenHelper {
         db.execSQL(DROP_CLIENTES);
         db.execSQL(DROP_CLIENTE_CONTATOS);
         db.execSQL(DROP_PRODUTOS);
+        db.execSQL(DROP_PEDIDO);
         onCreate(db);
     }
 }

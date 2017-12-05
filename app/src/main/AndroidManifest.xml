@@ -37,21 +37,24 @@
             android:label="Dados do cliente"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityPedidos"
-            android:label="Pedidos"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ActivityProdutos"
+            android:name=".ActivityProdutos"
             android:label="Produtos"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".TelaProdutosExibe"
-            android:label="Cadastro do produto"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Atualizador"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TelaProdutosExibe"
+            android:label="Cadastro do produto"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Atualizador"
             android:label="Atualizar"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.pedidos.NovoPedido"
+            android:label="Pedido"
             android:screenOrientation="portrait"
-            ></activity>
+            />
     </application>
 
 </manifest>
