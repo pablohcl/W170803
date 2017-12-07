@@ -213,7 +213,7 @@ public class BaseDB extends SQLiteOpenHelper {
                     PEDIDO_FINALIZADO+" NUMERIC NOT NULL, "+
                     PEDIDO_ID+" integer AUTO_INCREMENT primary key, "+
                     PEDIDO_CLIENTE+" text not null, "+
-                    PEDIDO_COND_PGTO+" text not null, "+
+                    PEDIDO_COND_PGTO+" text, "+
                     PEDIDO_OBS+" text, "+
                     PEDIDO_TOTAL+" REAL "+
                     ");";
@@ -231,7 +231,7 @@ public class BaseDB extends SQLiteOpenHelper {
     // BANCO, NOME, VERSAO ###########################################################
 
     private static final String BANCO_NOME = "watt.sqlite";
-    private static final int BANCO_VERSAO = 25;
+    private static final int BANCO_VERSAO = 31;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);

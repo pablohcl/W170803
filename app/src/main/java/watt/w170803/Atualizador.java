@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -27,6 +28,17 @@ import watt.w170803.util.produtos.ProdutoDB;
 
 public class Atualizador extends AppCompatActivity {
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish(); // Finaliza a Activity atual
+                break;
+            default:break;
+        }
+        return true;
+    }
+
     // ATUALIZAÇÃO PRODUTOS
     private String fileNameProdutos;
     ProgressBar progressBar;
@@ -41,6 +53,9 @@ public class Atualizador extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizador);
+
+        //up navigation
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btn = (Button) findViewById(R.id.btn);
         btnAtualizaClientes = (Button) findViewById(R.id.btn_atualiza_clientes);

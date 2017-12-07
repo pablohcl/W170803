@@ -25,12 +25,10 @@
         <activity
             android:name=".ActivityClientes"
             android:label="@string/label_clientes"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".TelaClientesCadastroFisica"
             android:label="Pessoa física"
-            android:parentActivityName=".ActivityClientes"
             android:screenOrientation="portrait" />
         <activity
             android:name=".TelaClientesExibe"
@@ -39,7 +37,6 @@
         <activity
             android:name=".ActivityProdutos"
             android:label="Produtos"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".TelaProdutosExibe"
@@ -48,7 +45,6 @@
         <activity
             android:name=".Atualizador"
             android:label="Atualizar"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".util.pedidos.NovoPedido"

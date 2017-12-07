@@ -27,7 +27,8 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
 
     // Args trazidos com a Intent
     private long clienteSelecionado;
-    private long idPedido;
+    private String argPedido;
+    private String argCliente;
 
     // Variáveis da classe
     private Pedido pedido;
@@ -58,19 +59,24 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
 
         // Args trazidos com a Intent
         Bundle args = getIntent().getExtras();
-        clienteSelecionado = Long.parseLong(args.getString("cliente selecionado"));
-        idPedido = args.getLong("pedido");
+        if(args.getString("cliente selecionado") != null) {
+            clienteSelecionado = Long.parseLong(args.getString("cliente selecionado"));
+            argCliente = args.getString("cliente selecionado");
+            salvarNoBanco(clienteSelecionado, getContext());
+            Log.d("log", "PARAMETRO CLIENTE RECEBIDO PELA ACTIVITY NOVO PEDIDO");
+        }
+        if(args.getString("pedido") != null){
+            argPedido = args.getString("pedido");
+            Log.d("log", "PARAMETRO PEDIDO RECEBIDO PELA ACTIVITY NOVO PEDIDO");
+        }
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         viewPager = (ViewPager) findViewById(R.id.vp_novo_pedido);
-        viewPager.setAdapter(new watt.w170803.util.pedidos.PagerAdapter(getSupportFragmentManager(), getContext(), String.valueOf(clienteSelecionado)));
+        viewPager.setAdapter(new watt.w170803.util.pedidos.PagerAdapter(getSupportFragmentManager(), getContext(), argPedido, argCliente));
 
         // Give the TabLayout the ViewPager
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tl_novo_pedido);
         tabLayout.setupWithViewPager(viewPager);
-
-        // verifica se existe pedido aberto e recupera ou cria um novo
-        getNovoPedido();
     }
 
     // Métodos da classe
@@ -78,18 +84,14 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
         return this;
     }
 
-    // verifica se existe pedido aberto e recupera ou cria um novo
-    private void getNovoPedido(){
-        pedDB = new PedidosDB(getContext());
-        if(pedDB.getPedidoAberto() != null) {
-            pedido = pedDB.getPedidoAberto();
-        }else{
-            pedido = new Pedido(pedDB.getCodigoNovoPedido(), clienteSelecionado);
-        }
-    }
-
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private void salvarNoBanco(long cliente, Context context){
+        PedidosDB pedDB = new PedidosDB(context);
+        pedido = new Pedido(cliente, pedDB.getCodigoNovoPedido());
+        pedDB.salvarNoBanco(pedido);
     }
 }

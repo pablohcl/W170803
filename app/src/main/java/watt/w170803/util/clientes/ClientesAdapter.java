@@ -94,7 +94,6 @@ public class ClientesAdapter extends RecyclerView.Adapter {
         Intent intent = new Intent(context, NovoPedido.class);
         Bundle args = new Bundle();
         args.putString("cliente selecionado", String.valueOf(view.getTag()));
-        args.putLong("pedido", 0);
         intent.putExtras(args);
         context.startActivity(intent);
     }

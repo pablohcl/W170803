@@ -18,6 +18,7 @@ import android.widget.Button;
 import java.io.InputStream;
 
 import watt.w170803.util.pedidos.NovoPedido;
+import watt.w170803.util.pedidos.Pedido;
 import watt.w170803.util.pedidos.PedidosDB;
 
 public class MainActivity extends AppCompatActivity
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity
         btnPedidos = (Button) findViewById(R.id.btn_pedidos);
         btnProdutos = (Button) findViewById(R.id.btn_produtos);
         btnAtualizar = (Button) findViewById(R.id.btn_atualizar);
+
+
+
+        verificaSeTemPedidoAberto();
 
         btnClientes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +101,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         // END Navigation Drawer
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        verificaSeTemPedidoAberto();
     }
 
     @Override
@@ -158,5 +169,19 @@ public class MainActivity extends AppCompatActivity
 
     public Context getContext(){
         return this;
+    }
+
+    private void verificaSeTemPedidoAberto(){
+
+        PedidosDB pedDB = new PedidosDB(getContext());
+
+        if(pedDB.getPedidoAberto() != null){
+            Pedido pedido = pedDB.getPedidoAberto();
+            Intent intent = new Intent(getContext(), NovoPedido.class);
+            Bundle args = new Bundle();
+            args.putString("pedido", String.valueOf(pedido.getIdPedido()));
+            intent.putExtras(args);
+            startActivity(intent);
+        }
     }
 }

@@ -14,11 +14,13 @@ public class PagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
     private Context context;
+    private String pedidoSelecionado;
     private String clienteSelecionado;
 
-    public PagerAdapter(FragmentManager fm, Context context, String cliente) {
+    public PagerAdapter(FragmentManager fm, Context context, String pedido, String cliente) {
         super(fm);
         this.context = context;
+        pedidoSelecionado = pedido;
         clienteSelecionado = cliente;
     }
 
@@ -30,8 +32,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            FragTela1NovoPedido frag1 = FragTela1NovoPedido.newInstance(clienteSelecionado);
-            return frag1;
+            return FragTela1NovoPedido.newInstance(pedidoSelecionado, clienteSelecionado);
         } else if (position == 1) {
             return new FragTela2ProdutosNovoPedido();
         }

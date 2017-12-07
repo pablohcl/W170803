@@ -28,10 +28,11 @@ import watt.w170803.util.clientes.ClientesDB;
 public class FragTela1NovoPedido extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "cliente selecionado";
+    private static final String ARG_PARAM1 = "pedido";
+    private static final String ARG_PARAM2 = "cliente selecionado";
 
     // TODO: Rename and change types of parameters
-    private String paramClienteSelecionado;
+    private String paramPedido;
 
     // Views do layout
     private TextView tvRazaoSocial;
@@ -51,14 +52,14 @@ public class FragTela1NovoPedido extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
      * @return A new instance of fragment FragTela1NovoPedido.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragTela1NovoPedido newInstance(String param1) {
+    public static FragTela1NovoPedido newInstance(String pedido, String cliente) {
         FragTela1NovoPedido fragment = new FragTela1NovoPedido();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM1, pedido);
+        args.putString(ARG_PARAM2, cliente);
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,11 +70,7 @@ public class FragTela1NovoPedido extends Fragment {
 
 
 
-        if (getArguments() != null) {
-            paramClienteSelecionado = getArguments().getString(ARG_PARAM1);
-        }else{
-            Log.d("LOG", "GET ARGUMENTS NULL");
-        }
+
     }
 
     @Override
@@ -90,7 +87,14 @@ public class FragTela1NovoPedido extends Fragment {
         tvBairro = (TextView) view.findViewById(R.id.tv_bairro_activity_novo_pedido);
         tvCidade = (TextView) view.findViewById(R.id.tv_cidade_activity_novo_pedido);
 
-        getCliente(String.valueOf(paramClienteSelecionado));
+        if (getArguments().getString(ARG_PARAM1) != null) {
+            setClienteByPedido(getArguments().getString(ARG_PARAM1));
+            Log.d("log", "arg1 veio");
+        }
+        if(getArguments().getString(ARG_PARAM2) != null){
+            setClienteById(getArguments().getString(ARG_PARAM2));
+            Log.d("log", "arg2 veio");
+        }
 
         // Inflate the layout for this fragment
         return view;
@@ -135,14 +139,13 @@ public class FragTela1NovoPedido extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private void getCliente(String idCliente){
+    private void setClienteById(String idCliente){
         ClientesDB cliDb = new ClientesDB(getContext());
         cliDb.abrirBanco();
         Clientes cli;
-        if(cliDb.consultarTotal(idCliente).getRazaoSocial() != null) {
+
+        if(cliDb.consultarTotal(idCliente) != null) {
             cli = cliDb.consultarTotal(idCliente);
-
-
 
             // Setando as views do layout
             tvRazaoSocial.setText(cli.getRazaoSocial());
@@ -155,5 +158,29 @@ public class FragTela1NovoPedido extends Fragment {
             Log.d("LOG", "CONSULTA PARA PEGAR OS DADOS DO CLIENTE RETORNOU NULA");
         }
         cliDb.fecharBanco();
+    }
+
+    private void setClienteByPedido(String idPedido){
+        PedidosDB pedDB = new PedidosDB(getContext());
+        pedDB.abrirBanco();
+        Clientes cli;
+        ClientesDB cliDB = new ClientesDB(getContext());
+
+        if(pedDB.descobrirClientePeloPedido(idPedido) != "0") {
+            String idCliente = pedDB.descobrirClientePeloPedido(idPedido);
+
+            cli = cliDB.consultarTotal(idCliente);
+
+            // Setando as views do layout
+            tvRazaoSocial.setText(cli.getRazaoSocial());
+            tvFantasia.setText(cli.getFantasia());
+            tvEndereco.setText(cli.getEndereco());
+            tvNumero.setText(cli.getNumero());
+            tvBairro.setText(cli.getBairro());
+            tvCidade.setText(cli.getCidade());
+        }else{
+            Log.d("LOG", "CONSULTA PARA PEGAR OS DADOS DO CLIENTE RETORNOU NULA");
+        }
+        cliDB.fecharBanco();
     }
 }
