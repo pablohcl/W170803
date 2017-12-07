@@ -20,6 +20,9 @@ import watt.w170803.util.db.BaseDB;
 import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.ClientesAdapter;
 import watt.w170803.util.clientes.ClientesDB;
+import watt.w170803.util.pedidos.NovoPedido;
+import watt.w170803.util.pedidos.Pedido;
+import watt.w170803.util.pedidos.PedidosDB;
 
 public class ActivityClientes extends AppCompatActivity {
 
@@ -47,6 +50,12 @@ public class ActivityClientes extends AppCompatActivity {
             default:break;
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        verificaSeTemPedidoAberto();
     }
 
     @Override
@@ -197,5 +206,19 @@ public class ActivityClientes extends AppCompatActivity {
 
         clientes = cDAO.consultar(campoBuscaSelecionado, etBuscaClientes.getText().toString());
         refreshList();
+    }
+
+    private void verificaSeTemPedidoAberto(){
+
+        PedidosDB pedDB = new PedidosDB(getContext());
+
+        if(pedDB.getPedidoAberto() != null){
+            Pedido pedido = pedDB.getPedidoAberto();
+            Intent intent = new Intent(getContext(), NovoPedido.class);
+            Bundle args = new Bundle();
+            args.putString("pedido", String.valueOf(pedido.getIdPedido()));
+            intent.putExtras(args);
+            startActivity(intent);
+        }
     }
 }
