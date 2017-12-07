@@ -126,7 +126,7 @@ public class ClientesDB {
         return resultado;
     }
 
-    public Clientes consultarTotal(long codigo){
+    public Clientes consultarTotal(String codigo){
 
         Clientes c = new Clientes();
         abrirBanco();

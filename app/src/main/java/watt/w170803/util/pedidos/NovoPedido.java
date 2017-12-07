@@ -2,6 +2,12 @@ package watt.w170803.util.pedidos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +23,7 @@ import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.ClientesDB;
 
 
-public class NovoPedido extends AppCompatActivity {
+public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido.OnFragmentInteractionListener, FragTela2ProdutosNovoPedido.OnFragmentInteractionListener, FragTela3ResumoNovoPedido.OnFragmentInteractionListener {
 
     // Args trazidos com a Intent
     private long clienteSelecionado;
@@ -26,6 +32,9 @@ public class NovoPedido extends AppCompatActivity {
     // Variáveis da classe
     private Pedido pedido;
     private PedidosDB pedDB;
+
+    //ViewPager
+    private ViewPager viewPager;
 
     // Botão voltar
     @Override
@@ -49,8 +58,16 @@ public class NovoPedido extends AppCompatActivity {
 
         // Args trazidos com a Intent
         Bundle args = getIntent().getExtras();
-        clienteSelecionado = args.getLong("cliente selecionado");
+        clienteSelecionado = Long.parseLong(args.getString("cliente selecionado"));
         idPedido = args.getLong("pedido");
+
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        viewPager = (ViewPager) findViewById(R.id.vp_novo_pedido);
+        viewPager.setAdapter(new watt.w170803.util.pedidos.PagerAdapter(getSupportFragmentManager(), getContext(), String.valueOf(clienteSelecionado)));
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tl_novo_pedido);
+        tabLayout.setupWithViewPager(viewPager);
 
         // verifica se existe pedido aberto e recupera ou cria um novo
         getNovoPedido();
@@ -69,5 +86,10 @@ public class NovoPedido extends AppCompatActivity {
         }else{
             pedido = new Pedido(pedDB.getCodigoNovoPedido(), clienteSelecionado);
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

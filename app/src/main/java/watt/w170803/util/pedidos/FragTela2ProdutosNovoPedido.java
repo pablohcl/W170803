@@ -1,49 +1,36 @@
 package watt.w170803.util.pedidos;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import watt.w170803.R;
-import watt.w170803.util.clientes.Clientes;
-import watt.w170803.util.clientes.ClientesDB;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragTela1NovoPedido.OnFragmentInteractionListener} interface
+ * {@link FragTela2ProdutosNovoPedido.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragTela1NovoPedido#newInstance} factory method to
+ * Use the {@link FragTela2ProdutosNovoPedido#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragTela1NovoPedido extends Fragment {
+public class FragTela2ProdutosNovoPedido extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "cliente selecionado";
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String paramClienteSelecionado;
-
-    // Views do layout
-    private TextView tvRazaoSocial;
-    private TextView tvFantasia;
-    private TextView tvEndereco;
-    private TextView tvNumero;
-    private TextView tvBairro;
-    private TextView tvCidade;
+    private String mParam1;
+    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    public FragTela1NovoPedido() {
+    public FragTela2ProdutosNovoPedido() {
         // Required empty public constructor
     }
 
@@ -52,13 +39,15 @@ public class FragTela1NovoPedido extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @return A new instance of fragment FragTela1NovoPedido.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment FragTela2ProdutosNovoPedido.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragTela1NovoPedido newInstance(String param1) {
-        FragTela1NovoPedido fragment = new FragTela1NovoPedido();
+    public static FragTela2ProdutosNovoPedido newInstance(String param1, String param2) {
+        FragTela2ProdutosNovoPedido fragment = new FragTela2ProdutosNovoPedido();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,34 +55,17 @@ public class FragTela1NovoPedido extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         if (getArguments() != null) {
-            paramClienteSelecionado = getArguments().getString(ARG_PARAM1);
-        }else{
-            Log.d("LOG", "GET ARGUMENTS NULL");
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_frag_tela1_novo_pedido, container, false);
-
-        // Views do layout
-        tvRazaoSocial = (TextView) view.findViewById(R.id.tv_razao_social_activity_novo_pedido);
-        tvFantasia = (TextView) view.findViewById(R.id.tv_fantasia_activity_novo_pedido);
-        tvEndereco = (TextView) view.findViewById(R.id.tv_endereco_activity_novo_pedido);
-        tvNumero = (TextView) view.findViewById(R.id.tv_numero_activity_novo_pedido);
-        tvBairro = (TextView) view.findViewById(R.id.tv_bairro_activity_novo_pedido);
-        tvCidade = (TextView) view.findViewById(R.id.tv_cidade_activity_novo_pedido);
-
-        getCliente(String.valueOf(paramClienteSelecionado));
-
         // Inflate the layout for this fragment
-        return view;
+        return inflater.inflate(R.layout.fragment_frag_tela2_produtos_novo_pedido, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,12 +78,12 @@ public class FragTela1NovoPedido extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
+        if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
-        }*/
+        }
     }
 
     @Override
@@ -133,27 +105,5 @@ public class FragTela1NovoPedido extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    private void getCliente(String idCliente){
-        ClientesDB cliDb = new ClientesDB(getContext());
-        cliDb.abrirBanco();
-        Clientes cli;
-        if(cliDb.consultarTotal(idCliente).getRazaoSocial() != null) {
-            cli = cliDb.consultarTotal(idCliente);
-
-
-
-            // Setando as views do layout
-            tvRazaoSocial.setText(cli.getRazaoSocial());
-            tvFantasia.setText(cli.getFantasia());
-            tvEndereco.setText(cli.getEndereco());
-            tvNumero.setText(cli.getNumero());
-            tvBairro.setText(cli.getBairro());
-            tvCidade.setText(cli.getCidade());
-        }else{
-            Log.d("LOG", "CONSULTA PARA PEGAR OS DADOS DO CLIENTE RETORNOU NULA");
-        }
-        cliDb.fecharBanco();
     }
 }

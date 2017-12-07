@@ -96,7 +96,7 @@ public class TelaClientesExibe extends AppCompatActivity {
         cDB = new ClientesDB(this);
 
         Clientes cliJur;
-        cliJur = cDB.consultarTotal(clicado);
+        cliJur = cDB.consultarTotal(String.valueOf(clicado));
 
         tvIdCliente.setText(String.valueOf(cliJur.getCodigoCliente()));
         tvRazaoSocial.setText(cliJur.getRazaoSocial());
