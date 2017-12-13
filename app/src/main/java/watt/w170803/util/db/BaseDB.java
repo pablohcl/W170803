@@ -225,13 +225,50 @@ public class BaseDB extends SQLiteOpenHelper {
 
 
 
+    //####### TABELA PEDIDO_PRODUTOS
+    public static final String TBL_PEDIDO_PRODUTOS = "pedido_produtos";
+    public static final String PEDIDO_PRODUTOS_ID = "id";
+    public static final String PEDIDO_PRODUTOS_ID_PEDIDO = "id_pedido";
+    public static final String PEDIDO_PRODUTOS_ID_PRODUTO = "id_produto";
+    public static final String PEDIDO_PRODUTOS_QTD = "quantidade";
+    public static final String PEDIDO_PRODUTOS_VALOR = "valor_und";
+    public static final String PEDIDO_PRODUTOS_TOTAL_ITEM = "total_item";
+
+    /* Colunas da Tabela PEDIDO_PRODUTOS. São públicos para qualquer classe. */
+    public static final String[] TBL_PEDIDO_PRODUTOS_COLUNAS = {
+            BaseDB.PEDIDO_PRODUTOS_ID,
+            BaseDB.PEDIDO_PRODUTOS_ID_PEDIDO,
+            BaseDB.PEDIDO_PRODUTOS_ID_PRODUTO,
+            BaseDB.PEDIDO_PRODUTOS_QTD,
+            BaseDB.PEDIDO_PRODUTOS_VALOR,
+            BaseDB.PEDIDO_PRODUTOS_TOTAL_ITEM
+    };
+
+    //DDL - criação da(s) tabela(s)
+    protected static final String CREATE_PEDIDO_PRODUTOS =
+            "create table "+TBL_PEDIDO_PRODUTOS+"(" +
+                    PEDIDO_PRODUTOS_ID+" INTEGER NOT NULL PRIMARY KEY, "+
+                    PEDIDO_PRODUTOS_ID_PEDIDO+" integer NOT NULL, "+
+                    PEDIDO_PRODUTOS_ID_PRODUTO+" INTEGER not null, "+
+                    PEDIDO_PRODUTOS_QTD+" REAL NOT NULL, "+
+                    PEDIDO_PRODUTOS_VALOR+" REAL NOT NULL, "+
+                    PEDIDO_PRODUTOS_TOTAL_ITEM+" REAL NOT NULL "+
+                    ");";
+
+    //DDL - exclusão da(s) tabela(s)
+    protected static final String DROP_PEDIDO_PRODUTOS =
+            "drop table if exists " + TBL_PEDIDO_PRODUTOS;
+
+
+
+
 
 
 
     // BANCO, NOME, VERSAO ###########################################################
 
     private static final String BANCO_NOME = "watt.sqlite";
-    private static final int BANCO_VERSAO = 31;
+    private static final int BANCO_VERSAO = 33;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);
@@ -244,6 +281,7 @@ public class BaseDB extends SQLiteOpenHelper {
         db.execSQL(CREATE_CLIENTE_CONTATOS);
         db.execSQL(CREATE_PRODUTOS);
         db.execSQL(CREATE_PEDIDO);
+        db.execSQL(CREATE_PEDIDO_PRODUTOS);
     }
 
     @Override
@@ -252,6 +290,7 @@ public class BaseDB extends SQLiteOpenHelper {
         db.execSQL(DROP_CLIENTE_CONTATOS);
         db.execSQL(DROP_PRODUTOS);
         db.execSQL(DROP_PEDIDO);
+        db.execSQL(DROP_PEDIDO_PRODUTOS);
         onCreate(db);
     }
 }

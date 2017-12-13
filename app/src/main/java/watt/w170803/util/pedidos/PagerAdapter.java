@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class PagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    private String tabTitles[] = new String[] { "Cliente", "Produtos", "Finalizar" };
     private Context context;
     private String pedidoSelecionado;
     private String clienteSelecionado;
@@ -34,7 +34,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return FragTela1NovoPedido.newInstance(pedidoSelecionado, clienteSelecionado);
         } else if (position == 1) {
-            return new FragTela2ProdutosNovoPedido();
+            return FragTela2ProdutosNovoPedido.newInstance(pedidoSelecionado);
         }
         return new FragTela3ResumoNovoPedido();
     }

@@ -1,6 +1,7 @@
 package watt.w170803.util.pedidos;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -68,6 +70,7 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
         if(args.getString("pedido") != null){
             argPedido = args.getString("pedido");
             Log.d("log", "PARAMETRO PEDIDO RECEBIDO PELA ACTIVITY NOVO PEDIDO");
+            exibirAlertDePedidoAberto();
         }
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
@@ -93,5 +96,18 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
         PedidosDB pedDB = new PedidosDB(context);
         pedido = new Pedido(cliente, pedDB.getCodigoNovoPedido());
         pedDB.salvarNoBanco(pedido);
+    }
+
+    private void exibirAlertDePedidoAberto(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        alert.setTitle("Atenção!");
+        alert.setMessage("Opa, parece que ficou um pedido em aberto. Continue ele ou exclua-o");
+        alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.show();
     }
 }

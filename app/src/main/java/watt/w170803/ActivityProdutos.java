@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,23 @@ public class ActivityProdutos extends AppCompatActivity {
     private long idPedido;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish(); // Finaliza a Activity atual
+                break;
+            default:break;
+        }
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produtos);
+
+        //up navigation
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // ARGS VINDOS COM A INTENT
         Bundle args = getIntent().getExtras();

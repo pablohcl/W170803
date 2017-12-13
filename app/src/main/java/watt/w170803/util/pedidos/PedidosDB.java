@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 
 import java.util.ArrayList;
 
@@ -112,5 +113,33 @@ public class PedidosDB {
         cursor.close();
         fecharBanco();
         return cliente;
+    }
+
+    public Pedido getPedido(String pedido){
+        abrirBanco();
+
+        Cursor cursor = database.query(
+                BaseDB.TBL_PEDIDO,
+                BaseDB.TBL_PEDIDO_COLUNAS,
+                BaseDB.PEDIDO_ID+" = '"+pedido+"'",
+                null,
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        if(cursor.getCount() == 1){
+            Pedido ped = new Pedido(Long.parseLong(cursor.getString(2)), Long.parseLong(cursor.getString(1)));
+            ped.setCondicaoPgto(cursor.getString(3));
+            ped.setObs(cursor.getString(4));
+            ped.setTotal(cursor.getShort(5));
+            cursor.close();
+            fecharBanco();
+            return ped;
+        }else{
+            cursor.close();
+            fecharBanco();
+            return null;
+        }
     }
 }
