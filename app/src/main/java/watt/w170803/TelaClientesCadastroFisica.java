@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,17 @@ import watt.w170803.util.clientes.contatos.ContatosClientesDB;
 import watt.w170803.util.clientes.ClientesDB;
 
 public class TelaClientesCadastroFisica extends AppCompatActivity {
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish(); // Finaliza a Activity atual
+                break;
+            default:break;
+        }
+        return true;
+    }
 
     private EditText etRazaoSocial;
     private EditText etFantasia;

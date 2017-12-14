@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.Spinner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import watt.w170803.util.produtos.Produto;
@@ -20,6 +22,7 @@ public class ActivityProdutos extends AppCompatActivity {
     private ArrayList<Produto> produtos;
     private ProdutoDB produtoDB;
     private ProdutoAdapter adapter;
+    private Spinner spinner;
 
     // ARGS VINDOS COM A INTENT
     private long idPedido;
@@ -44,11 +47,15 @@ public class ActivityProdutos extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // ARGS VINDOS COM A INTENT
-        Bundle args = getIntent().getExtras();
-        idPedido = args.getLong("id pedido");
+        Bundle args;
+        if(getIntent().getExtras() != null){
+            args = getIntent().getExtras();
+            idPedido = args.getLong("id pedido");
+        }
 
         // REFERÊNCIAS @@@@@
         rvProdutos = (RecyclerView) findViewById(R.id.rv_produtos);
+        spinner = (Spinner) findViewById(R.id.sn_grupos_produtos);
         context = ActivityProdutos.this;
         produtos = new ArrayList<Produto>();
         produtoDB = new ProdutoDB(this);

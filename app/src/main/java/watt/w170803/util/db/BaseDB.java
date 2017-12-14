@@ -265,10 +265,40 @@ public class BaseDB extends SQLiteOpenHelper {
 
 
 
+
+
+    //####### TABELA GRUPOS
+    public static final String TBL_GRUPOS = "grupos";
+    public static final String GRUPOS_ID = "id";
+    public static final String GRUPOS_DESC = "desc";
+
+    /* Colunas da Tabela GRUPOS. São públicos para qualquer classe. */
+    public static final String[] TBL_GRUPOS_COLUNAS = {
+            BaseDB.GRUPOS_ID,
+            BaseDB.GRUPOS_DESC
+    };
+
+    //DDL - criação da(s) tabela(s)
+    public static final String CREATE_GRUPOS =
+            "create table "+TBL_GRUPOS+"(" +
+                    GRUPOS_ID+" INTEGER NOT NULL PRIMARY KEY, "+
+                    GRUPOS_DESC+" TEXT NOT NULL "+
+                    ");";
+
+    //DDL - exclusão da(s) tabela(s)
+    public static final String DROP_GRUPOS =
+            "drop table if exists " + TBL_GRUPOS;
+
+
+
+
+
+
+
     // BANCO, NOME, VERSAO ###########################################################
 
     private static final String BANCO_NOME = "watt.sqlite";
-    private static final int BANCO_VERSAO = 33;
+    private static final int BANCO_VERSAO = 34;
 
     public BaseDB(Context context) {
         super(context, BANCO_NOME, null, BANCO_VERSAO);
@@ -282,6 +312,8 @@ public class BaseDB extends SQLiteOpenHelper {
         db.execSQL(CREATE_PRODUTOS);
         db.execSQL(CREATE_PEDIDO);
         db.execSQL(CREATE_PEDIDO_PRODUTOS);
+        db.execSQL(CREATE_GRUPOS);
+
     }
 
     @Override
@@ -291,6 +323,7 @@ public class BaseDB extends SQLiteOpenHelper {
         db.execSQL(DROP_PRODUTOS);
         db.execSQL(DROP_PEDIDO);
         db.execSQL(DROP_PEDIDO_PRODUTOS);
+        db.execSQL(DROP_GRUPOS);
         onCreate(db);
     }
 }

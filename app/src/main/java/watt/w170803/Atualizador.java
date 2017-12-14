@@ -25,6 +25,8 @@ import watt.w170803.util.clientes.Clientes;
 import watt.w170803.util.clientes.ClientesDB;
 import watt.w170803.util.produtos.Produto;
 import watt.w170803.util.produtos.ProdutoDB;
+import watt.w170803.util.produtos.grupos.ProdutoGrupo;
+import watt.w170803.util.produtos.grupos.ProdutoGrupoDB;
 
 public class Atualizador extends AppCompatActivity {
 
@@ -48,6 +50,8 @@ public class Atualizador extends AppCompatActivity {
     // ATUALIZAÇÃO CLIENTES
     private String fileNameClientes;
     private Button btnAtualizaClientes;
+    private Button btnAtualizaGrupos;
+    private String fileNameGrupos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +63,10 @@ public class Atualizador extends AppCompatActivity {
 
         btn = (Button) findViewById(R.id.btn);
         btnAtualizaClientes = (Button) findViewById(R.id.btn_atualiza_clientes);
+        btnAtualizaGrupos = (Button) findViewById(R.id.btn_atualiza_grupos);
         fileNameProdutos = "produtos";
         fileNameClientes = "clientes";
+        fileNameGrupos = "t_grupos";
         context = getBaseContext();
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +80,13 @@ public class Atualizador extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 importarWeb(fileNameClientes);
+            }
+        });
+
+        btnAtualizaGrupos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                importarWeb(fileNameGrupos);
             }
         });
 
@@ -233,6 +246,53 @@ public class Atualizador extends AppCompatActivity {
                     }
                 });
                 alertAtualizarClientes.show();
+
+                break;
+
+            case "t_grupos":
+
+                Log.d("log", "INICIANDO SALVAMENTO DOS DADOS");
+                ProdutoGrupoDB prodGrupoDB = new ProdutoGrupoDB(this);
+                prodGrupoDB.abrirBanco();
+                prodGrupoDB.recriarTblGrupos();
+
+                FileInputStream isGru = new FileInputStream(file);
+                InputStreamReader isReaderGru = new InputStreamReader(isGru, "windows-1250");
+                BufferedReader readerGru=new BufferedReader(isReaderGru);
+                //String linhaGru;
+                //String idCliente, razaoSocial, fantasia, cnpjCpf, inscricao, cep, endereco, numero, complemento, bairro, cidade, aniver, ddd1, telefone1, ddd2, telefone2, email, obs, eJuridica;
+
+                while ((linha=readerGru.readLine()) != null)
+                {
+                    String[] dadosDaLinha=linha.split(";");
+                    ProdutoGrupo gru = new ProdutoGrupo();
+
+                    gru.setIdGrupo(Long.parseLong(dadosDaLinha[0]));
+                    gru.setDescGrupo(dadosDaLinha[1]);
+
+                    prodGrupoDB.inserir(gru);
+
+                }
+
+                isGru.close();
+                prodGrupoDB.fecharBanco();
+                Log.d("log", "DADOS SALVOS NO BANCO COM SUCESSO");
+
+                // PROGRESS BAR #####
+                progressBar.setVisibility(View.GONE);
+                // PROGRESS BAR #####
+
+                // ALERT DIALOG AVISANDO QUE ESTA OK #####
+                AlertDialog.Builder alertAtualizarGrupos = new AlertDialog.Builder(Atualizador.this);
+                alertAtualizarGrupos.setMessage("Transmissão efetuada com sucesso.");
+                alertAtualizarGrupos.setTitle("Alerta");
+                alertAtualizarGrupos.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        btnAtualizaGrupos.setBackgroundResource(R.drawable.screen_green_border);
+                    }
+                });
+                alertAtualizarGrupos.show();
 
                 break;
 
