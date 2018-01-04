@@ -142,4 +142,13 @@ public class PedidosDB {
             return null;
         }
     }
+
+    public void deletePedido(String pedido){
+        abrirBanco();
+
+        database.execSQL("DELETE FROM "+BaseDB.TBL_PEDIDO+" WHERE "+BaseDB.PEDIDO_ID+" = "+pedido);
+        database.execSQL("DELETE FROM "+BaseDB.TBL_PEDIDO_PRODUTOS+" WHERE "+BaseDB.PEDIDO_PRODUTOS_ID_PEDIDO+" = "+pedido);
+
+        fecharBanco();
+    }
 }

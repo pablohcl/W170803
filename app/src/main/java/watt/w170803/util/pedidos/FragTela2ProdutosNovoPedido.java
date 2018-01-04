@@ -57,7 +57,8 @@ public class FragTela2ProdutosNovoPedido extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParamPedido = getArguments().getString(ARG_PARAM1);
-            pedido = getPedido(mParamPedido);
+            if(mParamPedido != null)
+                pedido = getPedido(mParamPedido);
         }
     }
 

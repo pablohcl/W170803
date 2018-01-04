@@ -1,5 +1,6 @@
 package watt.w170803.util.pedidos;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,10 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
 
     //ViewPager
     private ViewPager viewPager;
+
+    // Botões
+    private Button btnSalvar;
+    private Button btnCancelar;
 
     // Botão voltar
     @Override
@@ -70,8 +76,46 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
         if(args.getString("pedido") != null){
             argPedido = args.getString("pedido");
             Log.d("log", "PARAMETRO PEDIDO RECEBIDO PELA ACTIVITY NOVO PEDIDO");
+            vincularPedidoAberto(argPedido);
             exibirAlertDePedidoAberto();
         }
+
+        btnCancelar = (Button) findViewById(R.id.btn_tela_novo_pedido_cancelar_pedido);
+        btnSalvar = (Button) findViewById(R.id.btn_tela_novo_pedido_salvar_pedido);
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertCancelar = new AlertDialog.Builder(getContext());
+                alertCancelar.setTitle("Atenção!");
+                alertCancelar.setMessage("Deseja realmente cancelar o pedido?");
+                alertCancelar.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        PedidosDB pedDB = new PedidosDB(getContext());
+                        pedDB.deletePedido(String.valueOf(pedido.getIdPedido()));
+
+                        AlertDialog.Builder alertCancEfetuado = new AlertDialog.Builder(getContext());
+                        alertCancEfetuado.setTitle("Alerta!");
+                        alertCancEfetuado.setMessage("Pedido cancelado!");
+                        alertCancEfetuado.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        });
+                        alertCancEfetuado.show();
+                    }
+                });
+                alertCancelar.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alertCancelar.show();
+            }
+        });
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         viewPager = (ViewPager) findViewById(R.id.vp_novo_pedido);
@@ -109,5 +153,10 @@ public class NovoPedido extends AppCompatActivity implements FragTela1NovoPedido
             }
         });
         alert.show();
+    }
+
+    private void vincularPedidoAberto(String idPedido){
+        PedidosDB pedidosDB = new PedidosDB(getContext());
+        pedido = pedidosDB.getPedido(idPedido);
     }
 }
